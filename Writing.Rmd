@@ -1,0 +1,59 @@
+---
+title: "Some writing advice"
+output: html_document
+---
+
+# Some Writing Tips
+
+Writing your dissertation or literature review is a challenge. Here some advice:
+
+## Don't look down on reading a lot on how to write
+We all read books to improve our writing and you should do too. 
+
+If you want to get started on this, perhaps the short book by [@Mack2018] might well be worth trying. This book
+is freely available online [here](https://spie.org/Publications/Book/2317706?SSO=1). Another good book on 
+writing a scientific paper is [@Gastel2022]. 
+
+If you want to improve your writing style in general, then there are several
+good books available. A first one is 'Style: toward [@Williams1990] which has later on appeared
+with different titles. 
+l [@Pinker2014,@Zinsser2005]. 
+If you want to focus on writing scientific papers, 
+
+
+
+If you are one of my project students and you show me that these books are not available 
+in the library, I can get you money to buy you a book or two on this.
+
+## Avoid being vague
+Avoid sentences such as "Territory productivity can be measured by a variety of
+indirect and direct methods (Davies et al 2012). Such measures of productivity
+can subsequently help us calibrate the simulation model". Clearly the mentioning of 
+"indirect and direct methods" adds very little here. Why not give at least an
+example of an indirect and a direct method? Or perhaps scrap the indirect vs direct and
+just focus on 'different methods' and then give an example of one such method.
+Or if you realize the sentence on different methods adds little, why not omit it altogether?
+
+## Clearly label figures 
+If you use a figure with different panels, each panel should have a label, such
+as "A", "B", "C", etc. There are no excuses. If your R package does not do that,
+edit your figure in a graphics programme, or look at some of the queries about
+labeling figure panels in `ggplot`, for example [here](https://stackoverflow.com/questions/17576381/label-individual-panels-in-a-multi-panel-ggplot2).
+
+## Reference all figures
+If you don't refer to a figure in the text, you don't need it. Throw it out.
+
+## Explain terminology
+Typically, assume that the audience is someone who knows quite something 
+but is not necessarily a scientist. For example, a 2nd-year undergraduate. So
+any terminology needs to be explained, let alone any abbreviations upon first
+mentioning. 
+
+## Common writing errors
+
+- It is evolutionar*ily* stable strategy, not evolutionary stable strategy
+- Temperature-related perturbations instead of temperature related perturbations
+
+
+
+
