@@ -1,0 +1,7 @@
+book_filename: "Lab_handbook"
+rmd_files: ["index.Rmd","Installing_Software.Rmd"]
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+new_session: yes
