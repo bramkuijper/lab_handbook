@@ -4,11 +4,11 @@ output: html_document
 ---
 
 # Installing and using software to do your work
-To do your research in theoretical or computational biology, you need to install software. I typically try to keep things as free and open access as possible, so that you don't have hassle with license fees. However, this is not always possible (e.g., research projects involving Mathematica or matlab).
+To do your research in theoretical or computational biology, you will need to install a bunch of software. I typically try to keep things as free and open access as possible, so that you don't have hassle with license fees. However, this is not always possible (e.g., research projects involving Mathematica or matlab).
 
-Don't install *all* the software listed below - by now, you should have a clear idea what selection of software you need. If you have no idea, you need to get in touch.
+Don't install *all* the software listed below - by now, you should have a clear idea what selection of software you need. If not, get in touch asap.
 
-## On a Mac? Install software using Homebrew
+## On a Mac? Install your software using the Homebrew package manager
 [Homebrew](https://brew.sh){target="_blank"} is a small program that allows you to install and update multiple programs on your Mac simultaneously. Indeed, all research software that you will need on your Mac can be installed with homebrew. Using homebrew has the advantage that installation involves a single command, rather than you having to search for the correct version of the software online. Moreover, all installed packages will be updated to their latest versions by using two simple commands: `brew update`, following by `brew upgrade`.
 
 ### Installing homebrew
@@ -18,12 +18,18 @@ To install homebrew, you need to open the Terminal app (see [here](#MacTerminal)
 After homebrew is installed, you can use it to install other applications. You can search for software available for install through homebrew by using the website [formulae.brew.sh](https://formulae.brew.sh). 
 
 Let us install the [Textmate] text editor that we might need later. We do so using the [Terminal app](#MacTerminal) app, in which we type
-```{bash}
+```{bash eval=F}
 brew install --cask textmate
 ```
 
-## Installing R
-Rather than using the [absolute bare bones version of R](https://cran.r-project.org/){target="_blank"}, I'd use Rstudio as it is substantially easier to work with. You can either use the [Rstudio server](https://rstudio01.cles.ex.ac.uk){target="_blank"} that is offered by the University of Exeter, or use a locally installed version of Rstudio. Personally, the server-based version of Rstudio is probably the easiest to use, as it has already tons of packages installed. However, if you have no uni access anymore or work with no internet access, a locally installed version of Rstudio is best.
+### Updating all applications that have been installed via homebrew
+This is where things get handier than installing all software individually:
+```{bash eval=F}
+brew update && brew upgrade
+```
+
+## Rstudio
+Rather than using the [absolute bare bones version of R](https://cran.r-project.org/){target="_blank"}, I'd use [Rstudio](https://www.rstudio.com/) as it provides a full-blown IDE (integrated development environment) with text editor, variable inspector, file browswer and more. You can either use the [Rstudio server](https://rstudio01.cles.ex.ac.uk){target="_blank"} that is offered by the University of Exeter, or use a locally installed version of Rstudio. Personally, the server-based version of Rstudio is probably the easiest to use, as it already has tons of packages pre-installed. However, if you have no uni access anymore or don't have continuous internet access, a locally installed version of Rstudio is best.
 
 ### Using the web-based Rstudio server
 You can simply access this by using your web browser. You can access the Rstudio server here:
@@ -31,8 +37,12 @@ You can simply access this by using your web browser. You can access the Rstudio
 
 Once logged in, make sure to run the 4.x.x version, rather than a 3.x.x version. You can change versions on the top right of your Rstudio window within in your web browser. By now
 
-### Using a local install of Rstudio
-If you have a Windows machine, the best way to install Rstudio is to download the [Desktop version](https://www.rstudio.com/products/rstudio/download/){target="_blank"}.
+
+### Installing Rstudio on your own computer on windows or mac
+If you have a Windows machine, the best way to install Rstudio is to download the [Desktop version](https://www.rstudio.com/products/rstudio/download/){target="_blank"}. If you are on a mac, one could use:
+```{bash eval=F}
+brew install --cask rstudio
+```
 
 ## Installing Python
 You will need to install the Spyder IDE and associated packages. To this end, it is best to install [Anaconda](https://www.anaconda.com/products/individual){target="_blank"} which provide the whole python bundle and comes with a package manager.
@@ -40,10 +50,22 @@ You will need to install the Spyder IDE and associated packages. To this end, it
 ## Using the Mac OS Terminal app {#MacTerminal}
 On a Mac, a 'Terminal' application is available that allows you to execute UNIX shell commands on your computer. These are necessary  You can find the Terminal app in the `Applications` > `Utilities` folder. See Apple's support page [here](https://support.apple.com/en-gb/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac){target="_blank"} for more information on how to open this application.
 
-## Installing and working with github
-
-
 ## Installing software to develop C++ programs
 When working with the programming language C++, we will need to use the following software:
 
-1. A better-than-normal text editor. When on Windows, install the freely available text editor [Notepad++](){target="_blank"}
+1. A better-than-normal text editor. When on Windows, install the freely available text editor [Notepad++](){target="_blank"}. When on a mac, install textmate (see above).
+2. A C++ compiler.
+3. A software build environment like make or cmake.
+
+### Installing a command-line C++ compiler
+Rather than using any C++ compiler like Visual Studio or Code Blocks, we use the compiler [g++](https://gcc.gnu.org/), as that compiler is the same as used on our [computing clusters](https://universityofexeteruk.sharepoint.com/sites/CornwallARC). This allows us to easily move back and forth between your local computer and the computing cluster, as we might well want to perform a large number of runs once everything is up and running.
+
+The drawback of using g++ is that is used through the command line. Hence, while working with this compiler, you need some proficiency using the UNIX command line. More on that later.
+
+#### Installing g++ on Windows
+To install this compiler, we first need to install the [MSYS2](https://www.msys2.org/) environment, which provides a UNIX commandline shell on windows. See [here](https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2acdf3c-224e-49be-8ae3-ad2400f2b3c1&start=0) for the installation video. There is also [another video](https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=376342e6-5791-4c25-b2e3-ad2400ffe304&start=0) that shows you how to subsequently work with the compiler, once installed.
+
+#### Installing g++ on a Mac
+In order to install g++ on a Mac, you need to follow [a bunch of instructions](https://www.freecodecamp.org/news/install-xcode-command-line-tools/). 
+
+

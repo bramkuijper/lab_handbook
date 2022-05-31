@@ -1,0 +1,11 @@
+---
+title: "A typical work cycle when running simulations"
+output: html_document
+---
+# A typical work cycle when running simulations
+Here we illustrate some of the basic steps we take to run simulations and analyze them.
+
+## Use the terminal to go to your simulation code 
+By now, you should have a copy of your simulation code somewhere on your hard disk. We will use your UNIX terminal (which is either MSYS2-64 (windows) or the Terminal programme (mac) to go to this directory, by using the `cd` command to move the relevant work directory. If you are unsure how to do this, see the chapter on how to install software.
+
+## 

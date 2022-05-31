@@ -4,10 +4,6 @@
 %
 \documentclass[
 ]{book}
-\title{Lab Handbook}
-\author{Bram Kuijper}
-\date{2022-01-29}
-
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{iftex}
@@ -37,14 +33,46 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={Lab Handbook},
-  pdfauthor={Bram Kuijper},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
@@ -85,6 +113,18 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Some writing advice},
+  pdfauthor={Bram Kuijper},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Some writing advice}
+\author{Bram Kuijper}
+\date{2022-05-31}
 
 \begin{document}
 \maketitle
@@ -96,18 +136,195 @@
 \hypertarget{introduction}{%
 \chapter{Introduction}\label{introduction}}
 
-This document gives you an overview of some of the key computing practices in my lab. Enjoy!
+This document gives you an overview of some of the key computing practices used in our lab. Enjoy!
 
-\hypertarget{using-loops-to-calculate-sums-and-sums-of-squares}{%
-\chapter{Using loops to calculate sums and sums of squares}\label{using-loops-to-calculate-sums-and-sums-of-squares}}
+\hypertarget{installing-and-using-software-to-do-your-work}{%
+\chapter{Installing and using software to do your work}\label{installing-and-using-software-to-do-your-work}}
 
-We often use loops to go over series of values and perform operations on them. While more advanced R users typically use techniques such as \href{https://csgillespie.github.io/efficientR/programming.html\#vectorised-code}{vectorization}, or functions such as \href{https://rdrr.io/r/base/lapply.html}{\texttt{lapply()}}, using basic \texttt{for} loops is often the best thing to use when going over a series of values. Here we practice this by performing operations over a simple list of values.
+To do your research in theoretical or computational biology, you will need to install a bunch of software. I typically try to keep things as free and open access as possible, so that you don't have hassle with license fees. However, this is not always possible (e.g., research projects involving Mathematica or matlab).
 
-\hypertarget{printEx}{%
-\section{Printing values}\label{printEx}}
+Don't install \emph{all} the software listed below - by now, you should have a clear idea what selection of software you need. If not, get in touch asap.
 
-Here we have the following list of values:
+\hypertarget{on-a-mac-install-your-software-using-the-homebrew-package-manager}{%
+\section{On a Mac? Install your software using the Homebrew package manager}\label{on-a-mac-install-your-software-using-the-homebrew-package-manager}}
 
-  \bibliography{refs\_lab\_handbook.bib}
+\href{https://brew.sh}{Homebrew} is a small program that allows you to install and update multiple programs on your Mac simultaneously. Indeed, all research software that you will need on your Mac can be installed with homebrew. Using homebrew has the advantage that installation involves a single command, rather than you having to search for the correct version of the software online. Moreover, all installed packages will be updated to their latest versions by using two simple commands: \texttt{brew\ update}, following by \texttt{brew\ upgrade}.
+
+\hypertarget{installing-homebrew}{%
+\subsection{Installing homebrew}\label{installing-homebrew}}
+
+To install homebrew, you need to open the Terminal app (see \protect\hyperlink{MacTerminal}{here} about where to find the Terminal app on your Mac). Once the terminal is open, copy the single-line install statement from the \href{https://brew.sh/}{Homebrew website} and paste it into the Terminal app. Then press `Enter'. You will get a bunch of straightforward questions, after which homebrew installs itself.
+
+\hypertarget{installing-your-first-application-using-homebrew}{%
+\subsection{Installing your first application using homebrew}\label{installing-your-first-application-using-homebrew}}
+
+After homebrew is installed, you can use it to install other applications. You can search for software available for install through homebrew by using the website \href{https://formulae.brew.sh}{formulae.brew.sh}.
+
+Let us install the {[}Textmate{]} text editor that we might need later. We do so using the \protect\hyperlink{MacTerminal}{Terminal app} app, in which we type
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{brew}\NormalTok{ install }\AttributeTok{{-}{-}cask}\NormalTok{ textmate}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{updating-all-applications-that-have-been-installed-via-homebrew}{%
+\subsection{Updating all applications that have been installed via homebrew}\label{updating-all-applications-that-have-been-installed-via-homebrew}}
+
+This is where things get handier than installing all software individually:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{brew}\NormalTok{ update }\KeywordTok{\&\&} \ExtensionTok{brew}\NormalTok{ upgrade}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{rstudio}{%
+\section{Rstudio}\label{rstudio}}
+
+Rather than using the \href{https://cran.r-project.org/}{absolute bare bones version of R}, I'd use \href{https://www.rstudio.com/}{Rstudio} as it provides a full-blown IDE (integrated development environment) with text editor, variable inspector, file browswer and more. You can either use the \href{https://rstudio01.cles.ex.ac.uk}{Rstudio server} that is offered by the University of Exeter, or use a locally installed version of Rstudio. Personally, the server-based version of Rstudio is probably the easiest to use, as it already has tons of packages pre-installed. However, if you have no uni access anymore or don't have continuous internet access, a locally installed version of Rstudio is best.
+
+\hypertarget{using-the-web-based-rstudio-server}{%
+\subsection{Using the web-based Rstudio server}\label{using-the-web-based-rstudio-server}}
+
+You can simply access this by using your web browser. You can access the Rstudio server here:
+\url{https://rstudio01.cles.ex.ac.uk}, using your University of Exeter login.
+
+Once logged in, make sure to run the 4.x.x version, rather than a 3.x.x version. You can change versions on the top right of your Rstudio window within in your web browser. By now
+
+\hypertarget{installing-rstudio-on-your-own-computer-on-windows-or-mac}{%
+\subsection{Installing Rstudio on your own computer on windows or mac}\label{installing-rstudio-on-your-own-computer-on-windows-or-mac}}
+
+If you have a Windows machine, the best way to install Rstudio is to download the \href{https://www.rstudio.com/products/rstudio/download/}{Desktop version}. If you are on a mac, one could use:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{brew}\NormalTok{ install }\AttributeTok{{-}{-}cask}\NormalTok{ rstudio}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{installing-python}{%
+\section{Installing Python}\label{installing-python}}
+
+You will need to install the Spyder IDE and associated packages. To this end, it is best to install \href{https://www.anaconda.com/products/individual}{Anaconda} which provide the whole python bundle and comes with a package manager.
+
+\hypertarget{MacTerminal}{%
+\section{Using the Mac OS Terminal app}\label{MacTerminal}}
+
+On a Mac, a `Terminal' application is available that allows you to execute UNIX shell commands on your computer. These are necessary You can find the Terminal app in the \texttt{Applications} \textgreater{} \texttt{Utilities} folder. See Apple's support page \href{https://support.apple.com/en-gb/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac}{here} for more information on how to open this application.
+
+\hypertarget{installing-software-to-develop-c-programs}{%
+\section{Installing software to develop C++ programs}\label{installing-software-to-develop-c-programs}}
+
+When working with the programming language C++, we will need to use the following software:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  A better-than-normal text editor. When on Windows, install the freely available text editor \href{}{Notepad++}. When on a mac, install textmate (see above).
+\item
+  A C++ compiler.
+\item
+  A software build environment like make or cmake.
+\end{enumerate}
+
+\hypertarget{installing-a-c-compiler}{%
+\subsection{Installing a C++ compiler}\label{installing-a-c-compiler}}
+
+Rather than using any C++ compiler like Visual Studio or Code Blocks, we use the compiler \href{https://gcc.gnu.org/}{g++}, as that compiler is the same as used on our \href{https://universityofexeteruk.sharepoint.com/sites/CornwallARC}{computing clusters}. This allows us to easily move back and forth between your local computer and the computing cluster, as we might well want to perform a large number of runs once everything is up and running.
+
+\hypertarget{installing-g-on-windows}{%
+\subsubsection{Installing g++ on Windows}\label{installing-g-on-windows}}
+
+To install this compiler, we use the \href{https://www.msys2.org/}{MSYS2} environment. See \href{https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2acdf3c-224e-49be-8ae3-ad2400f2b3c1\&start=0}{here} for the installation video. There is also \href{https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=376342e6-5791-4c25-b2e3-ad2400ffe304\&start=0}{another video} that shows you how to subsequently work with the compiler, once installed.
+
+\hypertarget{installing-g-on-a-mac}{%
+\subsubsection{Installing g++ on a Mac}\label{installing-g-on-a-mac}}
+
+In order to install g++ on a Mac, you need to follow \href{https://www.freecodecamp.org/news/install-xcode-command-line-tools/}{a bunch of instructions}.
+
+\hypertarget{some-writing-tips}{%
+\chapter{Some Writing Tips}\label{some-writing-tips}}
+
+Writing your dissertation or literature review is a challenge. Here some advice:
+
+\hypertarget{writing-skills}{%
+\section{Writing skills}\label{writing-skills}}
+
+We all read books to improve our writing. Perhaps you should do too!
+
+If you want to get started on this, perhaps the short book by \citet{Mack2018} might well be worth trying. This book
+is freely available online \href{https://spie.org/Publications/Book/2317706?SSO=1}{here}. Another good book on how to write scientific papers is \citet{Gastel2022}.
+
+Instead of focusing chiefly on scientific writing, it might be that you would like to improve your writing at a more general level too. Several good books are available. A first one is \citet{Williams1990} which has later on appeared
+with different titles. Other books are \citet{Pinker2014} and \citet{Zinsser2006}.
+
+Hard copies of most of these books are available at the library or in my office. Of course, you should not be looking around for pdfs of these books\ldots{}
+
+\hypertarget{some-examples-of-theory-papers}{%
+\section{Some examples of theory papers}\label{some-examples-of-theory-papers}}
+
+Papers on theory are a bit different than empirical studies. Hence, here a bunch of examplesto see how theory papers are typically written: \citep{Fawcett2007},\citep{Trimmer2015},\citep{Kahn2015}.
+
+\hypertarget{common-examples-where-writing-goes-wrong}{%
+\section{Common examples where writing goes wrong}\label{common-examples-where-writing-goes-wrong}}
+
+\hypertarget{back-up-qualitative-statements}{%
+\subsection{Back up qualitative statements}\label{back-up-qualitative-statements}}
+
+Avoid sentences like ``The random matrix method introduced by May 1977 has been highly important in theoretical ecology. Here we use this technique to understand how mutualisms affect ecosystem dynamics''. The first sentence makes a claim about importance, but does not back it up with a statement that indeed testifies of its importance (think: ``as this approach has been central to the analysis of ecosystem stability in numerous theoretical studies {[}citations{]}''). But even then, you could argue that it still tells very little: why not tell us instead what the random matrix method is about and what it does??
+
+\hypertarget{being-overly-verbose}{%
+\subsection{Being overly verbose}\label{being-overly-verbose}}
+
+Avoid sentences such as ``Territory productivity can be measured by a variety of
+indirect and direct methods (Davies et al 2012). These measures of productivity
+can be used to calibrate simulation models.'' Clearly, the mentioning of
+``indirect and direct methods'' adds very little here. Why not give at least an
+example of an indirect and a direct method? Or perhaps scrap the indirect vs direct and
+just focus on `different methods' and then give an example of such a method.
+Or if you realize the sentence on different methods adds too little, why not omit it altogether?
+
+\hypertarget{make-sure-each-paragraph-addresses-the-broader-question}{%
+\subsection{Make sure each paragraph addresses the broader question}\label{make-sure-each-paragraph-addresses-the-broader-question}}
+
+It is easy to get mired into examples or definition questions that are a bit particularly. Unless you
+make explicit why the paragraph contributes to insight about the broader question
+asked in your dissertation, consider what you are writing irrelevant.
+
+\hypertarget{clearly-label-figures}{%
+\subsection{Clearly label figures}\label{clearly-label-figures}}
+
+If you use a figure with different panels, each panel should have a label, such
+as ``A'', ``B'', ``C'', etc. There are no excuses. If your R package does not do that,
+edit your figure in a graphics programme, or look at some of the queries about
+labeling figure panels in \texttt{ggplot}, for example \href{https://stackoverflow.com/questions/17576381/label-individual-panels-in-a-multi-panel-ggplot2}{here}.
+
+\hypertarget{reference-all-figures}{%
+\subsection{Reference all figures}\label{reference-all-figures}}
+
+If you don't refer to a figure in the text, you don't need it. Throw it out.
+
+\hypertarget{explain-terminology-upon-first-use}{%
+\subsection{Explain terminology upon first use}\label{explain-terminology-upon-first-use}}
+
+Typically, assume that the audience is someone who knows quite something
+but is not necessarily a scientist. For example, a 2nd-year undergraduate. So
+any terminology needs to be explained, let alone any abbreviations upon first
+mentioning.
+
+\hypertarget{various-writing-errors}{%
+\subsection{Various writing errors:}\label{various-writing-errors}}
+
+\begin{itemize}
+\tightlist
+\item
+  It is evolutionar\emph{ily} stable strategy, not evolutionary stable strategy
+\item
+  Temperature-related perturbations instead of temperature related perturbations
+\end{itemize}
+
+  \bibliography{refs.bib}
 
 \end{document}
