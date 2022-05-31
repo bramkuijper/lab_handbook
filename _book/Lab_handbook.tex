@@ -33,6 +33,14 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={A typical work cycle when running simulations},
+  pdfauthor={Bram Kuijper},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -113,16 +121,8 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
-\hypersetup{
-  pdftitle={Some writing advice},
-  pdfauthor={Bram Kuijper},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
 
-\title{Some writing advice}
+\title{A typical work cycle when running simulations}
 \author{Bram Kuijper}
 \date{2022-05-31}
 
@@ -208,13 +208,8 @@ If you have a Windows machine, the best way to install Rstudio is to download th
 
 You will need to install the Spyder IDE and associated packages. To this end, it is best to install \href{https://www.anaconda.com/products/individual}{Anaconda} which provide the whole python bundle and comes with a package manager.
 
-\hypertarget{MacTerminal}{%
-\section{Using the Mac OS Terminal app}\label{MacTerminal}}
-
-On a Mac, a `Terminal' application is available that allows you to execute UNIX shell commands on your computer. These are necessary You can find the Terminal app in the \texttt{Applications} \textgreater{} \texttt{Utilities} folder. See Apple's support page \href{https://support.apple.com/en-gb/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac}{here} for more information on how to open this application.
-
-\hypertarget{installing-software-to-develop-c-programs}{%
-\section{Installing software to develop C++ programs}\label{installing-software-to-develop-c-programs}}
+\hypertarget{section:installcpp}{%
+\section{Installing software to develop C++ programs}\label{section:installcpp}}
 
 When working with the programming language C++, we will need to use the following software:
 
@@ -222,50 +217,202 @@ When working with the programming language C++, we will need to use the followin
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  A better-than-normal text editor. When on Windows, install the freely available text editor \href{}{Notepad++}. When on a mac, install textmate (see above).
+  A UNIX Terminal (already installed on a mac, you will need to install on windows - see below)
 \item
-  A C++ compiler.
+  A C++ compiler, which in our case will be \texttt{clang} on mac and \texttt{g++} on windows (see below).
+\item
+  A better-than-normal text editor. When on Windows, install the freely available text editor \href{}{Notepad++}. See the Notepad++ website for installation instructions. When on a mac, install an editor such as textmate (see below).
 \item
   A software build environment like make or cmake.
 \end{enumerate}
 
-\hypertarget{installing-a-c-compiler}{%
-\subsection{Installing a C++ compiler}\label{installing-a-c-compiler}}
+\hypertarget{do-we-really-need-a-unix-terminal}{%
+\section{Do we really need a UNIX terminal?}\label{do-we-really-need-a-unix-terminal}}
 
-Rather than using any C++ compiler like Visual Studio or Code Blocks, we use the compiler \href{https://gcc.gnu.org/}{g++}, as that compiler is the same as used on our \href{https://universityofexeteruk.sharepoint.com/sites/CornwallARC}{computing clusters}. This allows us to easily move back and forth between your local computer and the computing cluster, as we might well want to perform a large number of runs once everything is up and running.
+Yes, you will need a UNIX terminal to access a broad collection of tools, namely the compiler \texttt{g++} o turn your C++ code into an executable programme, the command \texttt{git} to get code from repositories and \texttt{make} or \texttt{cmake} to automate the building of your code.
 
-\hypertarget{installing-g-on-windows}{%
-\subsubsection{Installing g++ on Windows}\label{installing-g-on-windows}}
+Sure, it would be possible to do this using Microsoft's Visual Studio. However, we decided to go for a UNIX-based toolchain everywhere, as these allow us to use the same compiler tools as used on the University's Linux \href{https://universityofexeteruk.sharepoint.com/sites/CornwallARC}{computing clusters}. This is important, as chances are that later on in your project you may want to run your simulations on one of these clusters to run a lot more replicate simulations or explore a large number of parameter combinations. If one has been working with Visual Studio, it typically is a massive pain to switch back to the different tools/compilers used on these Linux clusters. Hence, that is why we stick to a UNIX toolchain.
 
-To install this compiler, we use the \href{https://www.msys2.org/}{MSYS2} environment. See \href{https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2acdf3c-224e-49be-8ae3-ad2400f2b3c1\&start=0}{here} for the installation video. There is also \href{https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=376342e6-5791-4c25-b2e3-ad2400ffe304\&start=0}{another video} that shows you how to subsequently work with the compiler, once installed.
+\hypertarget{installing-a-unix-terminal-on-windows}{%
+\subsection{Installing a UNIX terminal on Windows}\label{installing-a-unix-terminal-on-windows}}
+
+To get a UNIX terminal running on windows, we will install the \href{https://www.msys2.org/}{MSYS2} environment. See \href{https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2acdf3c-224e-49be-8ae3-ad2400f2b3c1\&start=0}{here} for the installation video. There is also \href{https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=376342e6-5791-4c25-b2e3-ad2400ffe304\&start=0}{another video} that shows you how to subsequently work with the compiler, once installed.
+
+\hypertarget{installing-a-command-line-c-compiler-on-windows.}{%
+\subsection{Installing a command-line C++ compiler on windows.}\label{installing-a-command-line-c-compiler-on-windows.}}
+
+Rather than using any C++ compiler like Visual Studio or Code Blocks, we use the compiler \href{https://gcc.gnu.org/}{g++}, as that compiler is the same as used on our computing clusters. To install it, see the instruction video \href{https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2acdf3c-224e-49be-8ae3-ad2400f2b3c1\&start=0}{here}.
+
+\hypertarget{MacTerminal}{%
+\subsection{Using the Mac OS Terminal app}\label{MacTerminal}}
+
+To use the UNIX toolchain on a mac, you will need to use a UNIX terminal. Luckily this is installed as per default on any mac distribution. You can find the Terminal app in the \texttt{Applications} \textgreater{} \texttt{Utilities} folder on your hard drive. See Apple's support page \href{https://support.apple.com/en-gb/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac}{here} for more information on how to open this application.
 
 \hypertarget{installing-g-on-a-mac}{%
-\subsubsection{Installing g++ on a Mac}\label{installing-g-on-a-mac}}
+\subsection{Installing g++ on a Mac}\label{installing-g-on-a-mac}}
 
-In order to install g++ on a Mac, you need to follow \href{https://www.freecodecamp.org/news/install-xcode-command-line-tools/}{a bunch of instructions}.
+In order to install g++ on a Mac, you need to follow \href{https://www.freecodecamp.org/news/install-xcode-command-line-tools/}{quite some instructions}. Sorry no video.
 
-\hypertarget{some-writing-tips}{%
-\chapter{Some Writing Tips}\label{some-writing-tips}}
+\hypertarget{section}{%
+\subsection{}\label{section}}
 
-Writing your dissertation or literature review is a challenge. Here some advice:
+\hypertarget{a-typical-work-cycle-when-running-simulations}{%
+\chapter{A typical work cycle when running simulations}\label{a-typical-work-cycle-when-running-simulations}}
 
-\hypertarget{writing-skills}{%
-\section{Writing skills}\label{writing-skills}}
+Here we illustrate some of the basic steps we take to run simulations and analyze them. Please type along so that you can see what is happening on your own computer.
 
-We all read books to improve our writing. Perhaps you should do too!
+\hypertarget{start-the-terminal}{%
+\section{Start the terminal}\label{start-the-terminal}}
 
-If you want to get started on this, perhaps the short book by \citet{Mack2018} might well be worth trying. This book
-is freely available online \href{https://spie.org/Publications/Book/2317706?SSO=1}{here}. Another good book on how to write scientific papers is \citet{Gastel2022}.
+We assume that you are able to start the a UNIX terminal programme, which should be MSYS2-64 (on windows) or the Terminal programme (on mac). If you don't know where to find your UNIX terminal, read section \ref{section:installcpp} and if that still does not work get in touch.
 
-Instead of focusing chiefly on scientific writing, it might be that you would like to improve your writing at a more general level too. Several good books are available. A first one is \citet{Williams1990} which has later on appeared
-with different titles. Other books are \citet{Pinker2014} and \citet{Zinsser2006}.
+\hypertarget{get-to-your-home-directory}{%
+\section{Get to your home directory}\label{get-to-your-home-directory}}
 
-Hard copies of most of these books are available at the library or in my office. Of course, you should not be looking around for pdfs of these books\ldots{}
+The home directory on a UNIX terminal is contained in the alias \texttt{\textasciitilde{}} and can be accessed by using the \href{https://www.tutorialspoint.com/unix_commands/cd.htm}{\texttt{cd}} command in the following way:
 
-\hypertarget{some-examples-of-theory-papers}{%
-\section{Some examples of theory papers}\label{some-examples-of-theory-papers}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd}\NormalTok{ \textasciitilde{}}
+\BuiltInTok{pwd}
+\end{Highlighting}
+\end{Shaded}
 
-Papers on theory are a bit different than empirical studies. Hence, here a bunch of examplesto see how theory papers are typically written: \citep{Fawcett2007},\citep{Trimmer2015},\citep{Kahn2015}.
+\begin{verbatim}
+## /home/anaduarte
+\end{verbatim}
+
+where the last line lists the \href{https://phoenixnap.com/kb/pwd-linux}{\texttt{pwd}} command (present working directory) which gives your current location.
+
+\emph{Note} The home directory in MSYS2 is not the same as your Windows home directory! Rather, MSYS2's home directory \texttt{\textasciitilde{}} maps to something like \texttt{C:/MSYS2/home}.
+
+\hypertarget{check-the-contents-of-your-home-directory}{%
+\section{Check the contents of your home directory}\label{check-the-contents-of-your-home-directory}}
+
+You can check the contents of your home directory using the \texttt{ls} (list files) command, where we give it some special `flags', which are given by a dash \texttt{-}, followed by some additional single-character modifiers that change the behaviour of the \texttt{ls} command:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ls} \AttributeTok{{-}alnh}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## total 120K
+## drwxrwxr-x  5 1000 1000 4.0K May 31 23:02 .
+## drwxrwxr-x 31 1000 1000 4.0K May 10 14:39 ..
+## drwxrwxr-x  3 1000 1000 4.0K May 31 23:02 _book
+## -rw-rw-r--  1 1000 1000  208 May 31 18:31 _bookdown.yml
+## -rw-rw-r--  1 1000 1000  564 Jan 29 16:29 Cplusplus.Rmd
+## drwxrwxr-x  8 1000 1000 4.0K May 31 23:02 .git
+## -rw-rw-r--  1 1000 1000   54 Mar  7 20:42 .gitignore
+## -rw-rw-r--  1 1000 1000   51 Mar  7 20:41 .gitignore~
+## -rw-rw-r--  1 1000 1000  372 May 31 23:02 index.md
+## -rw-rw-r--  1 1000 1000  376 May 31 18:31 index.Rmd
+## -rw-rw-r--  1 1000 1000 7.2K May 31 23:02 Installing_Software.md
+## -rw-rw-r--  1 1000 1000 7.2K May 31 22:21 Installing_Software.Rmd
+## -rw-rw-r--  1 1000 1000  243 May 31 23:02 Lab_handbook.rds
+## -rw-rw-r--  1 1000 1000  277 May 31 21:17 lab_handbook.Rproj
+## -rw-rw-r--  1 1000 1000  277 Jan 29 11:56 lab_handbook.Rproj~
+## -rw-rw-r--  1 1000 1000  491 Jan 29 12:05 _output.yml
+## -rw-rw-r--  1 1000 1000  161 Jan 29 12:06 preamble.tex
+## -rw-rw-r--  1 1000 1000 6.6K May 31 22:12 refs.bib
+## -rw-rw-r--  1 1000 1000 6.6K May 31 22:12 refs.bib.bak
+## -rw-rw-r--  1 1000 1000    0 May 31 22:13 refs.bib.sav.tmp
+## -rw-rw-r--  1 1000 1000 2.7K Mar  7 22:50 refs_lab_handbook.bib.bak
+## -rw-rw-r--  1 1000 1000    0 Mar  7 22:50 refs_lab_handbook.bib.sav.tmp
+## -rw-rw-r--  1 1000 1000  128 May 31 23:02 rendera4b72123cd8c.rds
+## -rw-rw-r--  1 1000 1000    0 Mar  7 23:46 .Rhistory
+## drwxrwxr-x  4 1000 1000 4.0K Jan 29 12:05 .Rproj.user
+## -rw-rw-r--  1 1000 1000 4.0K May 31 23:01 SimulationWorkCycle.Rmd
+## -rw-rw-r--  1 1000 1000   80 Jan 29 21:07 Unix-toolchain.Rmd
+## -rw-rw-r--  1 1000 1000 4.6K May 31 22:14 Writing.Rmd
+\end{verbatim}
+
+Here we used the flags \texttt{-alnh} to make sure (i) we list hidden files (\texttt{-a}), (ii) we list all files below each other (the long format: \texttt{-l}) rather than dumping all files together on a single line, (iii) we list all files with numeric \href{https://en.wikipedia.org/wiki/User_identifier}{user and group IDs} (\texttt{-n}) and finally (iv) we list all dates and numbers in a human-readable format (\texttt{-h}). If you want to know more about the documentation of the \texttt{ls} command, type:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{man}\NormalTok{ ls}
+\end{Highlighting}
+\end{Shaded}
+
+which provides you with a manual page (man page) of the \texttt{ls} command. You can close this man page and return to the command line by pressing the \texttt{q} button.
+
+\hypertarget{git-clone-the-source-code-if-you-havent-already-done-so}{%
+\section{\texorpdfstring{\texttt{git\ clone} the source code if you haven't already done so}{git clone the source code if you haven't already done so}}\label{git-clone-the-source-code-if-you-havent-already-done-so}}
+
+All research projects in this lab use code repositories on \href{https://github.com/bramkuijper}{github}, which you can clone to your own computer. Working with code on github has several advantages. One is that it is relatively easy to carry through updates in the code without having to e-mail around umpteen versions of the source code. Moreover, once you have your own github account and I give you write access to my code repository, you can then submit your own updates to my github repository, so that we all have the latest version of the code available.
+
+\hypertarget{finding-out-whether-you-previously-cloned-a-code-repository}{%
+\subsection{Finding out whether you previously cloned a code repository}\label{finding-out-whether-you-previously-cloned-a-code-repository}}
+
+If you vaguely remember using the \texttt{git\ clone} command before, perhaps you should first inspect the output of the \texttt{ls\ -lanh} command to find out whether this is the case. If you find a directory within your home directory that looks remarkably similar to one of the \href{https://github.com/bramkuijper?tab=repositories}{repositories} you know enough. If you seem to have \texttt{git\ clone}d before, hold your horses for now and skip the next step.
+
+\hypertarget{clone-one-of-the-software-repositories}{%
+\subsection{Clone one of the software repositories}\label{clone-one-of-the-software-repositories}}
+
+You can clone any particular repository by doing:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ clone https://github.com/bramkuijper/YOUR\_REPOSITORY}
+\end{Highlighting}
+\end{Shaded}
+
+where \texttt{YOUR\_REPOSITORY} is the name of the repository that you should be using from \href{https://github.com/bramkuijper?tab=repositories}{this list}.
+
+Once everything is cloned, \texttt{cd} into the directory and check out what you find!
+
+\hypertarget{update-the-software-repositroy}{%
+\subsection{Update the software repositroy}\label{update-the-software-repositroy}}
+
+If you already have \texttt{git\ clone}d a repository, \texttt{cd} to the directory of the repository on your local computer and obtain the most recent version. You do so by typing
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ pull}
+\end{Highlighting}
+\end{Shaded}
+
+If you see the following message:
+
+\begin{verbatim}
+Already up-to-date.
+\end{verbatim}
+
+everything is cool.
+
+\hypertarget{compiling-the-software}{%
+\section{Compiling the software}\label{compiling-the-software}}
+
+For a typical simulation, you will find the source code in the \texttt{src} directory
+
+\hypertarget{some-writing-advice}{%
+\chapter{Some Writing Advice}\label{some-writing-advice}}
+
+Writing your dissertation or literature review can be a challenge. Here some advice:
+
+\hypertarget{read-about-writing-literature-that-helps-improving-writing-skills}{%
+\section{Read about writing: literature that helps improving writing skills}\label{read-about-writing-literature-that-helps-improving-writing-skills}}
+
+We all read books to improve our writing, even when you are a native speaker and think you have seen it all! (hint: you haven't.) Reading about writing techniques is a great way to improve your skills.
+
+If you want to know more about scientific writing, perhaps the short book by \citet{Mack2018} might well be worth trying. This book is freely available online \href{https://spie.org/Publications/Book/2317706?SSO=1}{here}. Another good book on how to write scientific papers is \citet{Gastel2022}.
+
+For a literature review, it can be helpful to read the paper by \citet{Sayer2018}, which is all about how to write review papers.
+
+Next to learning more about the techniques of scientific writing, it might be helpful to improve your general writing skills too. Several good books are available. A first one is \citet{Williams1990} which has later on appeared
+with different titles. Other books are \citet{Pinker2014} and \citet{Zinsser2006}. A classic is \citet{Strunk1959}.
+
+Hard copies of most of these books are available at the library or in my office. Of course, you should not be looking around the internet for pdfs of these books!
+
+\hypertarget{example-theory-papers-to-help-you-write-about-theory}{%
+\section{Example theory papers to help you write about theory}\label{example-theory-papers-to-help-you-write-about-theory}}
+
+Papers on theory are a bit different than empirical studies. Hence, here a bunch of examples to see how theory papers are typically written: \citep{Fawcett2007},\citep{Trimmer2015},\citep{Kahn2015}.
+
+In a theory paper it is important to explain the parameters that you use and why. In part, such explanations may focus on a comparison to previous theory, as in: ``To compare our model to predictions made by the classical hawk-dove game \citep{MaynardSmith1973}, the cost of losing a fight \(c\) and the value \(v\) of winning a fight are modeled as unidimensional variables with \(c > v\).''. Alternatively, you could refer to the empirical literature, as in: ``In speckled wood butterflies, it is unlikely that \(v>c\), because territories are far too temporary to be of any value.''
 
 \hypertarget{common-examples-where-writing-goes-wrong}{%
 \section{Common examples where writing goes wrong}\label{common-examples-where-writing-goes-wrong}}
@@ -273,14 +420,14 @@ Papers on theory are a bit different than empirical studies. Hence, here a bunch
 \hypertarget{back-up-qualitative-statements}{%
 \subsection{Back up qualitative statements}\label{back-up-qualitative-statements}}
 
-Avoid sentences like ``The random matrix method introduced by May 1977 has been highly important in theoretical ecology. Here we use this technique to understand how mutualisms affect ecosystem dynamics''. The first sentence makes a claim about importance, but does not back it up with a statement that indeed testifies of its importance (think: ``as this approach has been central to the analysis of ecosystem stability in numerous theoretical studies {[}citations{]}''). But even then, you could argue that it still tells very little: why not tell us instead what the random matrix method is about and what it does??
+Avoid sentences like ``The random matrix method introduced by May 1977 has been highly important in theoretical ecology. Here we use this technique to understand how mutualisms affect ecosystem dynamics''. The first sentence makes a claim about importance, but does not back it up with a statement that indeed testifies of its importance (one may add: ``as this approach has been central to the analysis of ecosystem stability in several later studies {[}citations{]}''). But even then, you could argue that it still tells very little: why not tell us instead what the random matrix method is about and what it does?
 
 \hypertarget{being-overly-verbose}{%
 \subsection{Being overly verbose}\label{being-overly-verbose}}
 
 Avoid sentences such as ``Territory productivity can be measured by a variety of
-indirect and direct methods (Davies et al 2012). These measures of productivity
-can be used to calibrate simulation models.'' Clearly, the mentioning of
+indirect and direct methods (Davies et al 2012). These measures
+can be used to calibrate simulation models.'' The mentioning of
 ``indirect and direct methods'' adds very little here. Why not give at least an
 example of an indirect and a direct method? Or perhaps scrap the indirect vs direct and
 just focus on `different methods' and then give an example of such a method.

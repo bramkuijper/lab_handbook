@@ -47,25 +47,33 @@ brew install --cask rstudio
 ## Installing Python
 You will need to install the Spyder IDE and associated packages. To this end, it is best to install [Anaconda](https://www.anaconda.com/products/individual){target="_blank"} which provide the whole python bundle and comes with a package manager.
 
-## Using the Mac OS Terminal app {#MacTerminal}
-On a Mac, a 'Terminal' application is available that allows you to execute UNIX shell commands on your computer. These are necessary  You can find the Terminal app in the `Applications` > `Utilities` folder. See Apple's support page [here](https://support.apple.com/en-gb/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac){target="_blank"} for more information on how to open this application.
 
-## Installing software to develop C++ programs
+## Installing software to develop C++ programs {#section:installcpp}
 When working with the programming language C++, we will need to use the following software:
 
-1. A better-than-normal text editor. When on Windows, install the freely available text editor [Notepad++](){target="_blank"}. When on a mac, install textmate (see above).
-2. A C++ compiler.
-3. A software build environment like make or cmake.
+1. A UNIX Terminal (already installed on a mac, you will need to install on windows - see below)
+2. A C++ compiler, which in our case will be `clang` on mac and `g++` on windows (see below).
+3. A better-than-normal text editor. When on Windows, install the freely available text editor [Notepad++](){target="_blank"}. See the Notepad++ website for installation instructions. When on a mac, install an editor such as textmate (see below).
+4. A software build environment like make or cmake.
 
-### Installing a command-line C++ compiler
-Rather than using any C++ compiler like Visual Studio or Code Blocks, we use the compiler [g++](https://gcc.gnu.org/), as that compiler is the same as used on our [computing clusters](https://universityofexeteruk.sharepoint.com/sites/CornwallARC). This allows us to easily move back and forth between your local computer and the computing cluster, as we might well want to perform a large number of runs once everything is up and running.
+## Do we really need a UNIX terminal?
+Yes, you will need a UNIX terminal to access a broad collection of tools, namely the compiler `g++` o turn your C++ code into an executable programme, the command `git` to get code from repositories and `make` or `cmake` to automate the building of your code.
 
-The drawback of using g++ is that is used through the command line. Hence, while working with this compiler, you need some proficiency using the UNIX command line. More on that later.
+Sure, it would be possible to do this using Microsoft's Visual Studio. However, we decided to go for a UNIX-based toolchain everywhere, as these allow us to use the same compiler tools as used on the University's Linux [computing clusters](https://universityofexeteruk.sharepoint.com/sites/CornwallARC). This is important, as chances are that later on in your project you may want to run your simulations on one of these clusters to run a lot more replicate simulations or explore a large number of parameter combinations. If one has been working with Visual Studio, it typically is a massive pain to switch back to the different tools/compilers used on these Linux clusters. Hence, that is why we stick to a UNIX toolchain.
 
-#### Installing g++ on Windows
-To install this compiler, we first need to install the [MSYS2](https://www.msys2.org/) environment, which provides a UNIX commandline shell on windows. See [here](https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2acdf3c-224e-49be-8ae3-ad2400f2b3c1&start=0) for the installation video. There is also [another video](https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=376342e6-5791-4c25-b2e3-ad2400ffe304&start=0) that shows you how to subsequently work with the compiler, once installed.
+### Installing a UNIX terminal on Windows
+To get a UNIX terminal running on windows, we will install the [MSYS2](https://www.msys2.org/) environment. See [here](https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2acdf3c-224e-49be-8ae3-ad2400f2b3c1&start=0) for the installation video. There is also [another video](https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=376342e6-5791-4c25-b2e3-ad2400ffe304&start=0) that shows you how to subsequently work with the compiler, once installed.
 
-#### Installing g++ on a Mac
-In order to install g++ on a Mac, you need to follow [a bunch of instructions](https://www.freecodecamp.org/news/install-xcode-command-line-tools/). 
+### Installing a command-line C++ compiler on windows.
+Rather than using any C++ compiler like Visual Studio or Code Blocks, we use the compiler [g++](https://gcc.gnu.org/), as that compiler is the same as used on our computing clusters. To install it, see the instruction video [here](https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2acdf3c-224e-49be-8ae3-ad2400f2b3c1&start=0).
+
+### Installing git on windows
+
+
+### Using the Mac OS Terminal app {#MacTerminal}
+To use the UNIX toolchain on a mac, you will need to use a UNIX terminal. Luckily this is installed as per default on any mac distribution. You can find the Terminal app in the `Applications` > `Utilities` folder on your hard drive. See Apple's support page [here](https://support.apple.com/en-gb/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac){target="_blank"} for more information on how to open this application.
+
+### Installing g++ on a Mac
+In order to install g++ on a Mac, you need to follow [quite some  instructions](https://www.freecodecamp.org/news/install-xcode-command-line-tools/). Sorry no video.
 
 

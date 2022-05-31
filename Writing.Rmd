@@ -1,40 +1,34 @@
----
-title: "Some writing advice"
-output: html_document
----
-
 # Some Writing Advice
 
-Writing your dissertation or literature review is a challenge. Here some advice:
+Writing your dissertation or literature review can be a challenge. Here some advice:
 
-## Literature that helps to improve writing skills
-We all read books to improve our writing. Perhaps you should do too! There is no lack of books on this topic!
+## Read about writing: literature that helps improving writing skills
+We all read books to improve our writing, even when you are a native speaker and think you have seen it all! (hint: you haven't.) Reading about writing techniques is a great way to improve your skills.
 
-If you want to get started on this, perhaps the short book by @Mack2018 might well be worth trying. This book
-is freely available online [here](https://spie.org/Publications/Book/2317706?SSO=1). Another good book on how to write scientific papers is @Gastel2022. 
+If you want to know more about scientific writing, perhaps the short book by @Mack2018 might well be worth trying. This book is freely available online [here](https://spie.org/Publications/Book/2317706?SSO=1). Another good book on how to write scientific papers is @Gastel2022. 
 
-Instead of focusing chiefly on scientific writing, it might be that you would like to improve your writing at a more general level too. Several good books are available. A first one is @Williams1990 which has later on appeared
-with different titles. Other books are @Pinker2014 and @Zinsser2006. 
+For a literature review, it can be helpful to read the paper by @Sayer2018, which is all about how to write review papers.
 
-Hard copies of most of these books are available at the library or in my office. Of course, you should not be looking around for pdfs of these books...
+Next to learning more about the techniques of scientific writing, it might be helpful to improve your general writing skills too. Several good books are available. A first one is @Williams1990 which has later on appeared
+with different titles. Other books are @Pinker2014 and @Zinsser2006. A classic is @Strunk1959.
+
+Hard copies of most of these books are available at the library or in my office. Of course, you should not be looking around the internet for pdfs of these books!
 
 ## Example theory papers to help you write about theory
-Papers on theory are a bit different than empirical studies. Hence, here a bunch of examplesto see how theory papers are typically written: [@Fawcett2007],[@Trimmer2015],[@Kahn2015].
+Papers on theory are a bit different than empirical studies. Hence, here a bunch of examples to see how theory papers are typically written: [@Fawcett2007],[@Trimmer2015],[@Kahn2015].
 
-In a theory paper it is important to explain why you use these parameters you use (and their values). For example, you may explain that similar values were used in previous papers (which ones?) and that you would like to contrast your results to those papers.
-
-
+In a theory paper it is important to explain the parameters that you use and why. In part, such explanations may focus on a comparison to previous theory, as in: "To compare our model to predictions made by the classical hawk-dove game [@MaynardSmith1973], the cost of losing a fight $c$ and the value $v$ of winning a fight are modeled as unidimensional variables with $c > v$.". Alternatively, you could refer to the empirical literature, as in: "In speckled wood butterflies, it is unlikely that $v>c$, because territories are far too temporary to be of any value."
 
 
 ## Common examples where writing goes wrong
 
 ### Back up qualitative statements
-Avoid sentences like "The random matrix method introduced by May 1977 has been highly important in theoretical ecology. Here we use this technique to understand how mutualisms affect ecosystem dynamics". The first sentence makes a claim about importance, but does not back it up with a statement that indeed testifies of its importance (think: "as this approach has been central to the analysis of ecosystem stability in numerous theoretical studies [citations]"). But even then, you could argue that it still tells very little: why not tell us instead what the random matrix method is about and what it does??
+Avoid sentences like "The random matrix method introduced by May 1977 has been highly important in theoretical ecology. Here we use this technique to understand how mutualisms affect ecosystem dynamics". The first sentence makes a claim about importance, but does not back it up with a statement that indeed testifies of its importance (one may add: "as this approach has been central to the analysis of ecosystem stability in several later studies [citations]"). But even then, you could argue that it still tells very little: why not tell us instead what the random matrix method is about and what it does?
 
 ### Being overly verbose
 Avoid sentences such as "Territory productivity can be measured by a variety of
-indirect and direct methods (Davies et al 2012). These measures of productivity
-can be used to calibrate simulation models." Clearly, the mentioning of 
+indirect and direct methods (Davies et al 2012). These measures
+can be used to calibrate simulation models." The mentioning of 
 "indirect and direct methods" adds very little here. Why not give at least an
 example of an indirect and a direct method? Or perhaps scrap the indirect vs direct and
 just focus on 'different methods' and then give an example of such a method.

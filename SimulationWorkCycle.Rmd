@@ -2,10 +2,60 @@
 title: "A typical work cycle when running simulations"
 output: html_document
 ---
-# A typical work cycle when running simulations
-Here we illustrate some of the basic steps we take to run simulations and analyze them.
+# A typical daily work cycle when running simulations
+Here we illustrate some of the basic steps we take to run simulations and analyze them. Please type along so that you can see what is happening on your own computer.
 
-## Use the terminal to go to your simulation code 
-By now, you should have a copy of your simulation code somewhere on your hard disk. We will use your UNIX terminal (which is either MSYS2-64 (windows) or the Terminal programme (mac) to go to this directory, by using the `cd` command to move the relevant work directory. If you are unsure how to do this, see the chapter on how to install software.
+## Start the terminal
+By now, you should be able to start your UNIX terminal programme, which should be MSYS2-64 on windows or the Terminal programme on a mac. If you don't know where to find your UNIX terminal, read section \@ref(section:installcpp) and if that still does not work, get in touch. 
 
-## 
+## Get to your home directory
+The home directory on a UNIX terminal is contained in the alias `~` and can be accessed by using the [`cd`](https://www.tutorialspoint.com/unix_commands/cd.htm) command in the following way:
+```{bash eval=T collapse=T}
+cd ~
+pwd
+```
+where the last line lists the [`pwd`](https://phoenixnap.com/kb/pwd-linux) command (present working directory) which gives your current location.
+
+*Note* The home directory in MSYS2 is not the same as your Windows home directory! Rather, MSYS2's home directory `~` maps to something like `C:/MSYS2/home`. 
+
+## Check the contents of your home directory
+You can check the contents of your home directory using the `ls` (list files) command, where we give it some special 'flags', which are given by a dash `-`, followed by some additional single-character modifiers that change the behaviour of the `ls` command:
+```{bash eval=F collapse=T}
+ls -alnh
+```
+Here we used the flags `-alnh` to make sure (i) we list hidden files (`-a`), (ii) we list all files below each other (the long format: `-l`) rather than dumping all files together on a single line, (iii) we list all files with numeric [user and group IDs](https://en.wikipedia.org/wiki/User_identifier) (`-n`) and finally (iv) we list all dates and numbers in a human-readable format (`-h`). If you want to know more about the documentation of the `ls` command, type:
+
+```{bash eval=F}
+man ls
+```
+which provides you with a manual page (man page) of the `ls` command. You can close this man page and return to the command line by pressing the `q` button.
+
+## Obtaining the source code from github
+All research projects in this lab use code repositories on [github](https://github.com/bramkuijper), which you can clone to your own computer. Working with code on github has several advantages. One is that it is relatively easy to carry through updates in the code without having to e-mail around umpteen different versions of the source code. Moreover, once you have your own github account and I give you write access to my code repository, you can then submit your own updates to my github repository, so that we all have the latest version of the code available. Finally, github is great when it comes to recording changes and allowing you to roll back changes.
+
+### Finding out whether you previously cloned a code repository
+If you vaguely remember using the `git clone` command before, perhaps you should first inspect the output of the `ls -lanh` command from within your home directory (`cd ~`) to find out whether a copy of the github repository in question is already present within your home directory. If you indeed find a directory within your home directory that looks remarkably similar to one of the [repositories](https://github.com/bramkuijper?tab=repositories), you know enough and you can skip the next step.
+
+### `git clone` one of the software repositories
+To download a copy of the remote repository on your own computer, do the following
+```{bash eval=F}
+git clone https://github.com/bramkuijper/YOUR_REPOSITORY
+```
+where `YOUR_REPOSITORY` is the name of the repository that you should be using from [this list ](https://github.com/bramkuijper?tab=repositories). By now, you should know which repository it is that you should be cloning, otherwise get in touch.
+
+Once everything is cloned, `cd` into the directory and check out what you find!
+
+### Update the software repositroy
+If you already have `git clone`d a repository, `cd` to the directory of the repository on your local computer and obtain the most recent version of the repository. You do so by typing
+```{bash eval=F}
+git pull
+```
+
+If you see the following message:
+```
+Already up-to-date.
+```
+you already have the latest version of the source code.
+
+## Compiling the software
+For a typical simulation, you will find the source code in the `src` directory (or one of its subdirectories) within the repository. Have a look around! If you don't want to use the terminal, use 
