@@ -8,45 +8,68 @@ Here we illustrate some of the basic steps we take to run simulations and analyz
 ## Start the terminal
 By now, you should be able to start your UNIX terminal programme, which should be MSYS2-64 on windows or the Terminal programme on a mac. If you don't know where to find your UNIX terminal, read section \@ref(section:installcpp) and if that still does not work, get in touch. 
 
-## Get to your home directory
-The home directory on a UNIX terminal is contained in the alias `~` and can be accessed by using the [`cd`](https://www.tutorialspoint.com/unix_commands/cd.htm) command in the following way:
-```{bash eval=T collapse=T}
+## Get to your home directory {#section:homedir}
+By using your UNIX terminal, go to your home directory. The home directory is contained in the alias `~` and can be accessed by using the [`cd`](https://www.tutorialspoint.com/unix_commands/cd.htm) command in the following way:
+```{bash eval=T, collapse=T}
 cd ~
+```
+You can then use the [`pwd`](https://phoenixnap.com/kb/pwd-linux) command (present working directory) to ensure that you are indeed in your home directory:
+```{bash eval=T, collapse=T}
 pwd
 ```
-where the last line lists the [`pwd`](https://phoenixnap.com/kb/pwd-linux) command (present working directory) which gives your current location.
 
-*Note* The home directory in MSYS2 is not the same as your Windows home directory! Rather, MSYS2's home directory `~` maps to something like `C:/MSYS2/home`. 
+### Windows users: MSYS2 and Windows home directories are not the same! {#section:windowsfileexplorer}
+The home directory `~` in MSYS2 is not the same as your Windows home directory! Rather, MSYS2's home directory `~` maps to something like `C:/MSYS2/home`, rather than to the usual location of the windows home directory which is something like `C:/Users/alwk/home`. 
+
+Knowing that `~` is somewhere else than the standard home directory, you can still use the [Windows File Explorer](https://support.microsoft.com/en-us/windows/find-and-open-file-explorer-ef370130-1cca-9dc5-e0df-2f7416fe1cb1#WindowsVersion=Windows_10) to access this location and inspect the files present in `~`. Click the `This PC` in the left column and go to `C:/MSYS2/home/`.
 
 ## Check the contents of your home directory
-You can check the contents of your home directory using the `ls` (list files) command, where we give it some special 'flags', which are given by a dash `-`, followed by some additional single-character modifiers that change the behaviour of the `ls` command:
-```{bash eval=F collapse=T}
+You can check the contents of your home directory using the `ls` (list files) command, where we provide the `ls` command with some additional 'flags', which are given by a dash `-`, followed by some additional single-character modifiers that change the behaviour of the `ls` command:
+```{bash eval=F, collapse=T}
 ls -alnh
 ```
-Here we used the flags `-alnh` to make sure (i) we list hidden files (`-a`), (ii) we list all files below each other (the long format: `-l`) rather than dumping all files together on a single line, (iii) we list all files with numeric [user and group IDs](https://en.wikipedia.org/wiki/User_identifier) (`-n`) and finally (iv) we list all dates and numbers in a human-readable format (`-h`). If you want to know more about the documentation of the `ls` command, type:
+Here we used the flags `-alnh` to make sure (i) we list hidden files (`-a`), (ii) we list all files below each other (the long format: `-l`) rather than dumping all files together on a single line, (iii) we list all files with numeric [user and group IDs](https://en.wikipedia.org/wiki/User_identifier) (`-n`) and finally (iv) we list all dates and numbers in a human-readable format (`-h`). 
+
+If you want to know more about the documentation of the `ls` command, type:
 
 ```{bash eval=F}
 man ls
 ```
 which provides you with a manual page (man page) of the `ls` command. You can close this man page and return to the command line by pressing the `q` button.
 
-## Obtaining the source code from github
+## Obtaining the simulation source code from github
 All research projects in this lab use code repositories on [github](https://github.com/bramkuijper), which you can clone to your own computer. Working with code on github has several advantages. One is that it is relatively easy to carry through updates in the code without having to e-mail around umpteen different versions of the source code. Moreover, once you have your own github account and I give you write access to my code repository, you can then submit your own updates to my github repository, so that we all have the latest version of the code available. Finally, github is great when it comes to recording changes and allowing you to roll back changes.
 
-### Finding out whether you previously cloned a code repository
+### Finding out whether you have already cloned a code repository
 If you vaguely remember using the `git clone` command before, perhaps you should first inspect the output of the `ls -lanh` command from within your home directory (`cd ~`) to find out whether a copy of the github repository in question is already present within your home directory. If you indeed find a directory within your home directory that looks remarkably similar to one of the [repositories](https://github.com/bramkuijper?tab=repositories), you know enough and you can skip the next step.
 
-### `git clone` one of the software repositories
-To download a copy of the remote repository on your own computer, do the following
+### Get the simulation code by using `git clone`
+To download a copy of the remote repository containing the simulation code to your own computer, do the following
 ```{bash eval=F}
 git clone https://github.com/bramkuijper/YOUR_REPOSITORY
 ```
-where `YOUR_REPOSITORY` is the name of the repository that you should be using from [this list ](https://github.com/bramkuijper?tab=repositories). By now, you should know which repository it is that you should be cloning, otherwise get in touch.
+where `YOUR_REPOSITORY` is the name of the repository that you should be using from [this list ](https://github.com/bramkuijper?tab=repositories). By now, you should know the name of the repository you should be cloning, otherwise get in touch.
 
-Once everything is cloned, `cd` into the directory and check out what you find!
+## Exploring your local copy of the repository
+Once everything is cloned to your local hard disk, you can explore its contents. Using your UNIX terminal (MSYS2 on windows, Terminal on a mac), you can `cd` into the repository and use `ls` to explore the different files. Alternatively, you can also your file explorer programme ([Windows File Explorer](https://support.microsoft.com/en-us/windows/find-and-open-file-explorer-ef370130-1cca-9dc5-e0df-2f7416fe1cb1#WindowsVersion=Windows_10) or [Finder](https://support.apple.com/en-gb/HT201732)) to go the location of your repository (see section \@ref(section:windowsfileexplorer)).
 
-### Update the software repositroy
-If you already have `git clone`d a repository, `cd` to the directory of the repository on your local computer and obtain the most recent version of the repository. You do so by typing
+The files that end in `.cpp` are the C++ source files, which contain the necessary
+code. The files that end in `.hpp`
+are C++ header files, which provide a blueprint to the C++ compiler about 
+the interface of the different classes and structs used. Next, you may also
+see a file such as `CMakelists.txt` or `makefile` which are used by `cmake`
+and `make`, two programmes that make it (much) easier to compile all the software.
+
+### Inspecting the source files     
+You can inspect the contents of the source files by opening them in
+Notepad++ (on windows), which you can open through the windows start menu. Within notepad++
+you then have to navigate to the location of your MSYS2 home directory (see section \@ref(section:windowsfileexplorer). 
+
+On a mac, you can inspect the contents of the source files by opening them in 
+textmate, which you can find in your Applications folder.
+
+## Updating the software repositroy
+If you would like to update your repository to contain the latest version, `cd` to the directory of the repository on your local computer and obtain the most recent version of the repository. You do so by typing
 ```{bash eval=F}
 git pull
 ```
@@ -55,7 +78,42 @@ If you see the following message:
 ```
 Already up-to-date.
 ```
-you already have the latest version of the source code.
+you already have the latest version of the source code in your repository. 
+
+### Conflicts when updating the software repository
+It may be that you get messages like
+```{bash eval=F}
+git pull
+#error: Pulling is not possible because you have unmerged files.
+#hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+#hint: as appropriate to mark resolution and make a commit.
+#fatal: Exiting because of an unresolved conflict.
+```
+in which case you might have files in which you have made local edits which clash
+with any remote edits. This is called a 'conflict', as apparently, your edits conflict
+with remote edits. There are two options:
+
+1. If you deem your edits to not be so important:
+Use `git` to overwrite the edits with the version from the remote repository. 
+To this end, `cd` into the folder of your repository and do the following: 
+```{bash eval=F}
+git checkout --theirs .
+```
+which tells `git` to checkout files from the remote repository (`--theirs`) and 
+replace files in the local repository (`.`).
+
+2. If your edits are very important
+If you open your files in your editor, you should find lines that highlight
+```
+>>>>
+some text
+====
+some text
+<<<
+```
+which reflect the various edits. Try to make choices about what you find important
+and make sure that the `>>>>`, `===` and `<<<<` characters are removed from the file.
+
 
 ## Compiling the software
-For a typical simulation, you will find the source code in the `src` directory (or one of its subdirectories) within the repository. Have a look around! If you don't want to use the terminal, use 
+For a typical simulation, you will find the source code in the `src` directory (or one of its subdirectories) within the repository. If you want to compile the simulation code, 

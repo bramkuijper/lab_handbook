@@ -1,7 +1,7 @@
 ---
 title: "Lab Handbook"
 author: "Bram Kuijper"
-date: "2022-05-31"
+date: "2022-06-01"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
