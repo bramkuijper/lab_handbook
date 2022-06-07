@@ -33,14 +33,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={A typical work cycle when running simulations},
-  pdfauthor={Bram Kuijper},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -121,10 +113,18 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={A typical work cycle when running simulations},
+  pdfauthor={Bram Kuijper},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
 \title{A typical work cycle when running simulations}
 \author{Bram Kuijper}
-\date{2022-06-01}
+\date{2022-06-07}
 
 \begin{document}
 \maketitle
@@ -206,7 +206,7 @@ If you have a Windows machine, the best way to install Rstudio is to download th
 \hypertarget{installing-python}{%
 \section{Installing Python}\label{installing-python}}
 
-You will need to install the Spyder IDE and associated packages. To this end, it is best to install \href{https://www.anaconda.com/products/individual}{Anaconda} which provide the whole python bundle and comes with a package manager.
+For those of you who will need to install python (installing python is more the exception than the norm, hence ask if unsure), it is best to install the \href{https://www.anaconda.com/products/individual}{Anaconda} distribution, which provides the whole python bundle and comes with a package manager.
 
 \hypertarget{section:installcpp}{%
 \section{Installing software to develop C++ programs}\label{section:installcpp}}
@@ -226,35 +226,78 @@ When working with the programming language C++, we will need to use the followin
   A software build environment like make or cmake.
 \end{enumerate}
 
-\hypertarget{do-we-really-need-a-unix-terminal}{%
-\section{Do we really need a UNIX terminal?}\label{do-we-really-need-a-unix-terminal}}
+\hypertarget{yes-we-really-need-a-unix-terminal.}{%
+\section{Yes, we really need a UNIX terminal.}\label{yes-we-really-need-a-unix-terminal.}}
 
-Yes, you will need a UNIX terminal to access a broad collection of tools, namely the compiler \texttt{g++} o turn your C++ code into an executable programme, the command \texttt{git} to get code from repositories and \texttt{make} or \texttt{cmake} to automate the building of your code.
+You will need a UNIX terminal to access a broad collection of tools, namely the compiler \texttt{g++} o turn your C++ code into an executable programme, the command \texttt{git} to get code from repositories and \texttt{make} or \texttt{cmake} to automate the building of your code.
 
-Sure, it would be possible to do this using Microsoft's Visual Studio. However, we decided to go for a UNIX-based toolchain everywhere, as these allow us to use the same compiler tools as used on the University's Linux \href{https://universityofexeteruk.sharepoint.com/sites/CornwallARC}{computing clusters}. This is important, as chances are that later on in your project you may want to run your simulations on one of these clusters to run a lot more replicate simulations or explore a large number of parameter combinations. If one has been working with Visual Studio, it typically is a massive pain to switch back to the different tools/compilers used on these Linux clusters. Hence, that is why we stick to a UNIX toolchain.
+Sure, it would be possible to avoid a UNIX toolchain, by using Microsoft's Visual Studio or another compiler. However, chances are that we'll be running things on one of the University's Linux \href{https://universityofexeteruk.sharepoint.com/sites/CornwallARC}{computing clusters} later on. If one has been working with Visual Studio, it typically is a massive pain to switch back to the different tools and compilers used on these Linux clusters, particularly when we would use associated libraries such as \texttt{gsl} or \texttt{eigen}. By contrast, when you already use a UNIX terminal on your local computer, moving to use the University's Linux cluster is very easy.
 
-\hypertarget{installing-a-unix-terminal-on-windows}{%
-\subsection{Installing a UNIX terminal on Windows}\label{installing-a-unix-terminal-on-windows}}
+\hypertarget{windows-install-msys2-as-our-unix-terminal}{%
+\section{Windows: install MSYS2 as our UNIX terminal}\label{windows-install-msys2-as-our-unix-terminal}}
 
 To get a UNIX terminal running on windows, we will install the \href{https://www.msys2.org/}{MSYS2} environment. See \href{https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2acdf3c-224e-49be-8ae3-ad2400f2b3c1\&start=0}{here} for the installation video. There is also \href{https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=376342e6-5791-4c25-b2e3-ad2400ffe304\&start=0}{another video} that shows you how to subsequently work with the compiler, once installed.
 
-\hypertarget{installing-a-command-line-c-compiler-on-windows.}{%
-\subsection{Installing a command-line C++ compiler on windows.}\label{installing-a-command-line-c-compiler-on-windows.}}
+\hypertarget{accessing-msys2-once-installed}{%
+\subsection{Accessing MSYS2 once installed}\label{accessing-msys2-once-installed}}
+
+Once everything is installed, use the MSYS2 MinGW x64 executable, rather than the default MSYS2 executable. To start this, simply type \texttt{msys} in the windows search box (see screenshot) and the \texttt{x64} version will appear in the menu:
+
+\begin{figure}
+\includegraphics[width=11.62in]{images/screenshot_windows_msys64_menu} \caption{Location of MSYS x64 in the windows menu. The default MSYS2 app will appear on top, but the x64 version can be found right below (red circle).}\label{fig:figScreenShotMenu}
+\end{figure}
+
+\hypertarget{section:MSYS2homedir}{%
+\subsection{Accessing MSYS2's home directory through Windows File Explorer}\label{section:MSYS2homedir}}
+
+The home directory in MSYS2 is indicated by the \texttt{\textasciitilde{}} sign, which points to a directory on your hard drive. However, the MSYS2 home directory is not the same as your Windows home directory! Rather, MSYS2's home directory \texttt{\textasciitilde{}} maps to something like \texttt{C:/msys64/home/\$your\_user\_name}, rather than to the usual location of the windows home directory which is something like \texttt{C:/Users/\$your\_user\_name/home}, where you need to replace \texttt{\$your\_user\_name} with your windows user name.
+
+Knowing that \texttt{\textasciitilde{}} is somewhere else than the standard home directory, you can still use the \href{https://support.microsoft.com/en-us/windows/find-and-open-file-explorer-ef370130-1cca-9dc5-e0df-2f7416fe1cb1\#WindowsVersion=Windows_10}{Windows File Explorer} to access this location and inspect the files present in \texttt{\textasciitilde{}}. Click the \texttt{This\ PC} in the left column of the Windows File Explorer and go to \texttt{C:/msys64/home/\$your\_user\_name}. Here an example screenshot to clarify matters:
+
+\begin{figure}
+\includegraphics[width=500pt]{images/screenshot_windows_msys} \caption{Accessing the contents of the `msys64` directory via Windows File Explorer. Later on, the simulation code and simulation output will be found within this directory (in particular, within its `home` directory).}\label{fig:figWindowsExplorer}
+\end{figure}
+
+\hypertarget{installing-a-command-line-c-compiler-within-msys2}{%
+\subsection{Installing a command-line C++ compiler within MSYS2}\label{installing-a-command-line-c-compiler-within-msys2}}
 
 Rather than using any C++ compiler like Visual Studio or Code Blocks, we use the compiler \href{https://gcc.gnu.org/}{g++}, as that compiler is the same as used on our computing clusters. To install it, see the instruction video \href{https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2acdf3c-224e-49be-8ae3-ad2400f2b3c1\&start=0}{here}.
 
-\hypertarget{installing-git-on-windows}{%
-\subsection{Installing git on windows}\label{installing-git-on-windows}}
+\hypertarget{installing-git-within-msys2}{%
+\subsection{\texorpdfstring{Installing \texttt{git} within MSYS2}{Installing git within MSYS2}}\label{installing-git-within-msys2}}
 
-\hypertarget{MacTerminal}{%
-\subsection{Using the Mac OS Terminal app}\label{MacTerminal}}
+We need \texttt{git} to download and synchronize code repositories. To install \texttt{git} within MSYS2 type the command
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{pacman} \AttributeTok{{-}S}\NormalTok{ git}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{windows-use-notepad-as-your-text-editor-of-choice}{%
+\subsection{Windows: use notepad++ as your text editor of choice}\label{windows-use-notepad-as-your-text-editor-of-choice}}
+
+To edit and inspect source files, please \textbf{do not} use the standard text editor on windows, which is \href{https://apps.microsoft.com/store/detail/windows-notepad/9MSMLRH6LZF3?hl=en-us\&gl=US}{notepad}. This crippled and lame editor cannot read source files with line endings that are used on different operating systems like linux or mac. Moreover, it does not have syntax colouring, which is a life saver when reading code.
+
+Hence, please install the free editor Notepad++ which provides syntax colouring and more.
+You can download a copy of Notepad++ \href{https://notepad-plus-plus.org/downloads/}{here}.
+
+If you don't like Notepad++, have a google yourself. Any code editor that supports syntax coloring of C++,R,Python files and supports \texttt{CR/LF} and \texttt{LF} line endings should be OK.
+
+\hypertarget{mac-a-unix-terminal-is-provided-via-the-terminal-app-within-the-applicationsutilities-folder}{%
+\section{Mac: a UNIX terminal is provided via the Terminal app within the Applications/Utilities folder}\label{mac-a-unix-terminal-is-provided-via-the-terminal-app-within-the-applicationsutilities-folder}}
 
 To use the UNIX toolchain on a mac, you will need to use a UNIX terminal. Luckily this is installed as per default on any mac distribution. You can find the Terminal app in the \texttt{Applications} \textgreater{} \texttt{Utilities} folder on your hard drive. See Apple's support page \href{https://support.apple.com/en-gb/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac}{here} for more information on how to open this application.
 
-\hypertarget{installing-g-on-a-mac}{%
-\subsection{Installing g++ on a Mac}\label{installing-g-on-a-mac}}
+\hypertarget{mac-install-g-and-git}{%
+\subsection{\texorpdfstring{Mac: Install \texttt{g++} and \texttt{git}}{Mac: Install g++ and git}}\label{mac-install-g-and-git}}
 
-In order to install g++ on a Mac, you need to follow \href{https://www.freecodecamp.org/news/install-xcode-command-line-tools/}{quite some instructions}. Sorry no video.
+In order to install g++ on a Mac, you need to follow \href{https://www.freecodecamp.org/news/install-xcode-command-line-tools/}{quite some instructions}. Once this is installed \texttt{g++} is installed, as is \texttt{git}.
+
+\hypertarget{mac-install-a-text-editor-like-textmate}{%
+\subsection{Mac: install a text editor like textmate}\label{mac-install-a-text-editor-like-textmate}}
+
+You can find textmate \href{https://macromates.com/}{here}. If you don't like textmate, find any other code editor that supports syntax coloring of C++,R,Python files and supports \texttt{CR/LF} and \texttt{LF} line endings.
 
 \hypertarget{a-typical-daily-work-cycle-when-running-simulations}{%
 \chapter{A typical daily work cycle when running simulations}\label{a-typical-daily-work-cycle-when-running-simulations}}
@@ -264,7 +307,7 @@ Here we illustrate some of the basic steps we take to run simulations and analyz
 \hypertarget{start-the-terminal}{%
 \section{Start the terminal}\label{start-the-terminal}}
 
-By now, you should be able to start your UNIX terminal programme, which should be MSYS2-64 on windows or the Terminal programme on a mac. If you don't know where to find your UNIX terminal, read section \ref{section:installcpp} and if that still does not work, get in touch.
+By now, you should be able to start your \textbf{UNIX terminal programme}, which should be MSYS2-64 on windows or the Terminal programme on a mac. If you don't know where to find your UNIX terminal, read section \ref{section:installcpp} and if that still does not work, get in touch.
 
 \hypertarget{section:homedir}{%
 \section{Get to your home directory}\label{section:homedir}}
@@ -274,24 +317,23 @@ By using your UNIX terminal, go to your home directory. The home directory is co
 \begin{Shaded}
 \begin{Highlighting}[]
 \BuiltInTok{cd}\NormalTok{ \textasciitilde{}}
-\BuiltInTok{pwd}
-\CommentTok{\#\# /home/anaduarte}
 \end{Highlighting}
 \end{Shaded}
 
-where the last line lists the \href{https://phoenixnap.com/kb/pwd-linux}{\texttt{pwd}} command (present working directory) which gives your current location.
+You can then use the \href{https://phoenixnap.com/kb/pwd-linux}{\texttt{pwd}} command (where \texttt{pwd} is an abbreviation of present working directory) to ensure that you are indeed in your home directory:
 
-\hypertarget{section:windowsfileexplorer}{%
-\subsection{Windows users: accessing your home directory in MSYS2 and Windows File Explorer}\label{section:windowsfileexplorer}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{pwd}
+\end{Highlighting}
+\end{Shaded}
 
-The home directory \texttt{\textasciitilde{}} in MSYS2 is not the same as your Windows home directory! Rather, MSYS2's home directory \texttt{\textasciitilde{}} maps to something like \texttt{C:/MSYS2/home}, rather than to the usual location of the windows home directory which is something like \texttt{C:/Users/alwk/home}.
+** Note for windows users: ** the MSYS2 home directory is not the same as your windows home directory. See for more information \ref{section:MSYS2homedir}.
 
-Knowing that \texttt{\textasciitilde{}} is somewhere else than the standard home directory, you can still use the \href{https://support.microsoft.com/en-us/windows/find-and-open-file-explorer-ef370130-1cca-9dc5-e0df-2f7416fe1cb1\#WindowsVersion=Windows_10}{Windows File Explorer} to access this location and inspect the files present in \texttt{\textasciitilde{}}. Click the \texttt{This\ PC} in the left column and go to \texttt{C:/MSYS2/home/}.
+\hypertarget{check-the-contents-of-your-home-directory-using-ls}{%
+\section{\texorpdfstring{Check the contents of your home directory using \texttt{ls}}{Check the contents of your home directory using ls}}\label{check-the-contents-of-your-home-directory-using-ls}}
 
-\hypertarget{check-the-contents-of-your-home-directory}{%
-\section{Check the contents of your home directory}\label{check-the-contents-of-your-home-directory}}
-
-You can check the contents of your home directory using the \texttt{ls} (list files) command, where we provide the \texttt{ls} command with some additional `flags', which are given by a dash \texttt{-}, followed by some additional single-character modifiers that change the behaviour of the \texttt{ls} command:
+You can check the contents of your home directory using the \texttt{ls} (list files) command, where we provide the \texttt{ls} command with some additional `flags' to modify the information that is provided by \texttt{ls}. One can provide such flags by adding a space followed by a dash \texttt{-} and then followed by some additional single-character modifiers that change the behaviour of the \texttt{ls} command. For example, we can type
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -311,20 +353,23 @@ If you want to know more about the documentation of the \texttt{ls} command, typ
 
 which provides you with a manual page (man page) of the \texttt{ls} command. You can close this man page and return to the command line by pressing the \texttt{q} button.
 
-\hypertarget{obtaining-the-simulation-source-code-from-github}{%
-\section{Obtaining the simulation source code from github}\label{obtaining-the-simulation-source-code-from-github}}
+\hypertarget{using-ls-to-locate-the-github-repository-that-contains-your-simulation-code}{%
+\subsection{\texorpdfstring{Using \texttt{ls} to locate the github repository that contains your simulation code}{Using ls to locate the github repository that contains your simulation code}}\label{using-ls-to-locate-the-github-repository-that-contains-your-simulation-code}}
 
-All research projects in this lab use code repositories on \href{https://github.com/bramkuijper}{github}, which you can clone to your own computer. Working with code on github has several advantages. One is that it is relatively easy to carry through updates in the code without having to e-mail around umpteen different versions of the source code. Moreover, once you have your own github account and I give you write access to my code repository, you can then submit your own updates to my github repository, so that we all have the latest version of the code available. Finally, github is great when it comes to recording changes and allowing you to roll back changes.
+All research projects in this lab use code repositories that I have uploaded to github and that you can download to your own computer and modify. See \href{https://github.com/bramkuijper}{here} for a list of all repositories. If you don't know which of these repositories to download to your own computer, get in touch.
 
-\hypertarget{finding-out-whether-you-have-already-cloned-a-code-repository}{%
-\subsection{Finding out whether you have already cloned a code repository}\label{finding-out-whether-you-have-already-cloned-a-code-repository}}
+Working with code repositories on github has several advantages: for starters, it facilitates carrying through updates without having to e-mail back-and-forth umpteen different versions of the source code. Second, if you have your own github account and I have provided you with write access to my code repository, you can then submit your own updates to my github repository, so that we all have the latest version of the code available. Third, github is great when it comes to keep track of all changes, which is essential when you want to roll back changes, for example. Fourth, it makes sure that the science we are doing is accessible and hence hopefully a bit more transparent.
 
-If you vaguely remember using the \texttt{git\ clone} command before, perhaps you should first inspect the output of the \texttt{ls\ -lanh} command from within your home directory (\texttt{cd\ \textasciitilde{}}) to find out whether a copy of the github repository in question is already present within your home directory. If you indeed find a directory within your home directory that looks remarkably similar to one of the \href{https://github.com/bramkuijper?tab=repositories}{repositories}, you know enough and you can skip the next step.
+If you vaguely remember using the \texttt{git\ clone} command before, perhaps you should first inspect the output of the \texttt{ls\ -lanh} command from within your home directory (\texttt{cd\ \textasciitilde{}}) to find out whether a copy of the github repository in question is already present within your home directory. For example, the command below shows code that displays the contents of a home directory on a remote computer:
 
-\hypertarget{get-the-simulation-code-by-using-git-clone}{%
-\subsection{\texorpdfstring{Get the simulation code by using \texttt{git\ clone}}{Get the simulation code by using git clone}}\label{get-the-simulation-code-by-using-git-clone}}
+where you see several github repositories listed. If you want to understand what all the columns are, have a look \href{https://unix.stackexchange.com/a/103118}{here}. Note that the \texttt{d} modifiers in front mean that the file is a directory (as is the case for the \texttt{coop\_size} directory, for example), whereas a \texttt{-} in front means the listed file is a regular file (as is the case for the \texttt{summary\_data.csv} file). Git repositories are typically contained in directories unless we have messed things up.
 
-To download a copy of the remote repository containing the simulation code to your own computer, do the following
+If you indeed find a directory within your home directory that looks remarkably similar to one of the \href{https://github.com/bramkuijper?tab=repositories}{repositories}, it means you have downloaded the repository already before. Hence, you can skip section \ref{section:downloadgithub}.
+
+\hypertarget{section:downloadgithub}{%
+\subsection{\texorpdfstring{Download the simulation code by using \texttt{git\ clone}}{Download the simulation code by using git clone}}\label{section:downloadgithub}}
+
+To download a copy of the remote repository containing the simulation code to your own computer, execute the following command:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -334,29 +379,78 @@ To download a copy of the remote repository containing the simulation code to yo
 
 where \texttt{YOUR\_REPOSITORY} is the name of the repository that you should be using from \href{https://github.com/bramkuijper?tab=repositories}{this list}. By now, you should know the name of the repository you should be cloning, otherwise get in touch.
 
-\hypertarget{exploring-the-local-copy-of-the-repository}{%
-\subsection{Exploring the local copy of the repository}\label{exploring-the-local-copy-of-the-repository}}
+\hypertarget{exploring-your-local-copy-of-the-repository}{%
+\section{Exploring your local copy of the repository}\label{exploring-your-local-copy-of-the-repository}}
 
-Once everything is cloned to your local hard disk, you can explore its contents. Using your UNIX terminal (MSYS2 on windows, Terminal on a mac), you can \texttt{cd} into the repository and use \texttt{ls} to explore the different files. Alternatively, you can also your file explorer programme (\href{https://support.microsoft.com/en-us/windows/find-and-open-file-explorer-ef370130-1cca-9dc5-e0df-2f7416fe1cb1\#WindowsVersion=Windows_10}{Windows File Explorer} or \href{https://support.apple.com/en-gb/HT201732}{Finder}) to go the location of your repository (see section \ref{section:windowsfileexplorer}).
+Once everything is cloned to your local hard disk, you can explore its contents. Use \texttt{cd\ \$repository\_name} (where you need to replace \texttt{\$repository\_name} with the name of your repository, for example \texttt{cd\ coop\_size}) to enter into the repository.
+
+\hypertarget{pro-tip-save-on-typing-a-lot-by-using-tab-autocompletion}{%
+\subsection{\texorpdfstring{Pro-tip: save on typing a lot by using \texttt{Tab} autocompletion}{Pro-tip: save on typing a lot by using Tab autocompletion}}\label{pro-tip-save-on-typing-a-lot-by-using-tab-autocompletion}}
+
+Typing out whole directory names like \texttt{cd\ sexsel\_space\_multisignal} gets tedious after a while. Luckily, you can save on typing everything. Instead type the first few letters like \texttt{cd\ s} and then pressing the \texttt{Tab} button to autocomplete the directory name.
+
+If there is only one directory name that starts with an \texttt{s}, pressing \texttt{Tab} results in immediate autocompletion of the directory name. If however, there are multiple directories starting with an \texttt{s}, the terminal will output all the different directories starting with an \texttt{s} (after pressing \texttt{Tab} at least twice). For example, typing \texttt{cd\ s} in the directory that has contents as listed in the above listing \ref{fig:ls-listing} and then pressing \texttt{Tab} twice will give you
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd}\NormalTok{ s}
+\CommentTok{\#sexsel\_bacteria/              sexsel\_space\_multisignal/     sex\_specific\_maternal\_effect/ stress\_damage/     }
+\end{Highlighting}
+\end{Shaded}
+
+what this means is that the terminal found four alternative directory names that start with an \texttt{s}. It then asks you to supply more characters so that it knows which directory name to autocomplete. Hence if I'd type \texttt{cd\ sexsel\_s} followed by \texttt{Tab}, there are no alternatives left, and the terminal immediately autocompletes the remainder of the directory name \texttt{sexsel\_space\_multisignal}.
+
+\hypertarget{exploring-your-local-repository-continued}{%
+\subsection{Exploring your local repository continued\ldots{}}\label{exploring-your-local-repository-continued}}
+
+If the \texttt{cd} command was successful, you can then use \texttt{ls} to explore the contents. With respect to the \texttt{coop\_size} directory, for example, we have the following listing:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ls} \AttributeTok{{-}alnh}
+\ExtensionTok{total}\NormalTok{ 564K}
+\CommentTok{\#drwxr{-}xr{-}x 1 848446593 848298497  336 May 26 10:13 .}
+\CommentTok{\#drwxr{-}xr{-}x 1 848446593 848298497  178 May 24 00:48 ..}
+\CommentTok{\#{-}rw{-}r{-}{-}r{-}{-} 1 848446593 848298497 4.8K May 24 00:48 coop\_fluct.lyx}
+\CommentTok{\#{-}rw{-}r{-}{-}r{-}{-} 1 848446593 848298497 9.6K May 24 00:48 coop\_size\_continuous.nb}
+\CommentTok{\#{-}rw{-}r{-}{-}r{-}{-} 1 848446593 848298497 497K May 24 00:48 coop\_size.nb}
+\CommentTok{\#{-}rw{-}r{-}{-}r{-}{-} 1 848446593 848298497  16K May 24 00:48 coop\_variable\_envts\_leggett.nb}
+\CommentTok{\#{-}rw{-}r{-}{-}r{-}{-} 1 848446593 848298497 3.6K May 24 00:48 coop\_variable\_envts\_queuing.nb}
+\CommentTok{\#drwxr{-}xr{-}x 1 848446593 848298497   32 May 24 00:53 data}
+\CommentTok{\#drwxr{-}xr{-}x 1 848446593 848298497   94 May 27 10:24 figs}
+\CommentTok{\#drwxr{-}xr{-}x 1 848446593 848298497  204 May 27 00:05 .git}
+\CommentTok{\#{-}rw{-}r{-}{-}r{-}{-} 1 848446593 848298497  123 May 24 00:53 .gitignore}
+\CommentTok{\#drwxr{-}xr{-}x 1 848446593 848298497  126 May 26 14:12 sbin}
+\CommentTok{\#drwxr{-}xr{-}x 1 848446593 848298497   98 May 24 00:53 src}
+\CommentTok{\#{-}rw{-}r{-}{-}r{-}{-} 1 848446593 848298497  19K May 24 00:53 varying\_patch\_size\_overlap.lyx}
+\end{Highlighting}
+\end{Shaded}
+
+There is a whole bunch of files here, but we typically want to be looking into the \texttt{src} directory, which contains - in turn - other subdirectories such as \texttt{ibm} or \texttt{numerical} with source code. By now, you should
+
+Alternatively, you can also your file explorer programme (\href{https://support.microsoft.com/en-us/windows/find-and-open-file-explorer-ef370130-1cca-9dc5-e0df-2f7416fe1cb1\#WindowsVersion=Windows_10}{Windows File Explorer} or \href{https://support.apple.com/en-gb/HT201732}{Finder}) to go the location of your repository (see section \ref{section:MSYS2homedir}).
 
 The files that end in \texttt{.cpp} are the C++ source files, which contain the necessary
 code. The files that end in \texttt{.hpp}
 are C++ header files, which provide a blueprint to the C++ compiler about
 the interface of the different classes and structs used. Next, you may also
 see a file such as \texttt{CMakelists.txt} or \texttt{makefile} which are used by \texttt{cmake}
-and \texttt{make}, two programmes that make it (much) easier to compile all the software.
+and \texttt{make} to handily automate compilation of all the files.
 
-\hypertarget{inspecting-the-source-code}{%
-\subsection{Inspecting the source code}\label{inspecting-the-source-code}}
+\hypertarget{inspecting-the-source-files}{%
+\subsection{Inspecting the source files}\label{inspecting-the-source-files}}
 
-You can inspect the source code of the various do this by using
-notepad++ (on windows), which you can open through the windows start menu. Within notepad++
-you then have to navigate to the location of your
+You can inspect the contents of the source files by opening them in
+Notepad++ (on windows, see section \ref{section:notepad}), which you can open through the windows start menu. Within notepad++
+you then have to navigate to the location of your MSYS2 home directory (see section \ref{section:MSYS2homedir}.
 
-\hypertarget{update-the-software-repositroy}{%
-\subsection{Update the software repositroy}\label{update-the-software-repositroy}}
+On a mac, you can inspect the contents of the source files by opening them in
+textmate, which you can find in your Applications folder.
 
-If you already have \texttt{git\ clone}d a repository, \texttt{cd} to the directory of the repository on your local computer and obtain the most recent version of the repository. You do so by typing
+\hypertarget{updating-the-software-repository}{%
+\section{Updating the software repository}\label{updating-the-software-repository}}
+
+If you would like to update your repository to contain the latest version, \texttt{cd} to the directory of the repository on your local computer and obtain the most recent version of the repository. You do so by typing
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -432,7 +526,7 @@ and make sure that the \texttt{\textgreater{}\textgreater{}\textgreater{}\textgr
 \hypertarget{compiling-the-software}{%
 \section{Compiling the software}\label{compiling-the-software}}
 
-For a typical simulation, you will find the source code in the \texttt{src} directory (or one of its subdirectories) within the repository. Have a look around! If you don't want to use the terminal, use
+For a typical simulation, you will find the source code in the \texttt{src} directory (or one of its subdirectories) within the repository. If you want to compile the simulation code,
 
 \hypertarget{some-writing-advice}{%
 \chapter{Some Writing Advice}\label{some-writing-advice}}

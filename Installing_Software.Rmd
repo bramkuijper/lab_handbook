@@ -45,7 +45,7 @@ brew install --cask rstudio
 ```
 
 ## Installing Python
-You will need to install the Spyder IDE and associated packages. To this end, it is best to install [Anaconda](https://www.anaconda.com/products/individual){target="_blank"} which provide the whole python bundle and comes with a package manager.
+For those of you who will need to install python (installing python is more the exception than the norm, hence ask if unsure), it is best to install the  [Anaconda](https://www.anaconda.com/products/individual){target="_blank"}  distribution, which provides the whole python bundle and comes with a package manager.
 
 
 ## Installing software to develop C++ programs {#section:installcpp}
@@ -56,24 +56,54 @@ When working with the programming language C++, we will need to use the followin
 3. A better-than-normal text editor. When on Windows, install the freely available text editor [Notepad++](){target="_blank"}. See the Notepad++ website for installation instructions. When on a mac, install an editor such as textmate (see below).
 4. A software build environment like make or cmake.
 
-## Do we really need a UNIX terminal?
-Yes, you will need a UNIX terminal to access a broad collection of tools, namely the compiler `g++` o turn your C++ code into an executable programme, the command `git` to get code from repositories and `make` or `cmake` to automate the building of your code.
+## Yes, we really need a UNIX terminal.
+You will need a UNIX terminal to access a broad collection of tools, namely the compiler `g++` o turn your C++ code into an executable programme, the command `git` to get code from repositories and `make` or `cmake` to automate the building of your code.
 
-Sure, it would be possible to do this using Microsoft's Visual Studio. However, we decided to go for a UNIX-based toolchain everywhere, as these allow us to use the same compiler tools as used on the University's Linux [computing clusters](https://universityofexeteruk.sharepoint.com/sites/CornwallARC). This is important, as chances are that later on in your project you may want to run your simulations on one of these clusters to run a lot more replicate simulations or explore a large number of parameter combinations. If one has been working with Visual Studio, it typically is a massive pain to switch back to the different tools/compilers used on these Linux clusters. Hence, that is why we stick to a UNIX toolchain.
+Sure, it would be possible to avoid a UNIX toolchain, by using Microsoft's Visual Studio or another compiler. However, chances are that we'll be running things on one of the University's Linux [computing clusters](https://universityofexeteruk.sharepoint.com/sites/CornwallARC) later on. If one has been working with Visual Studio, it typically is a massive pain to switch back to the different tools and compilers used on these Linux clusters, particularly when we would use associated libraries such as `gsl` or `eigen`. By contrast, when you already use a UNIX terminal on your local computer, moving to use the University's Linux cluster is very easy.
 
-### Installing a UNIX terminal on Windows
+## Windows: install MSYS2 as our UNIX terminal
 To get a UNIX terminal running on windows, we will install the [MSYS2](https://www.msys2.org/) environment. See [here](https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2acdf3c-224e-49be-8ae3-ad2400f2b3c1&start=0) for the installation video. There is also [another video](https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=376342e6-5791-4c25-b2e3-ad2400ffe304&start=0) that shows you how to subsequently work with the compiler, once installed.
 
-### Installing a command-line C++ compiler on windows.
+### Accessing MSYS2 once installed
+Once everything is installed, use the MSYS2 MinGW x64 executable, rather than the default MSYS2 executable. To start this, simply type `msys` in the windows search box (see screenshot) and the `x64` version will appear in the menu:
+```{r figScreenShotMenu, fig.cap="Location of MSYS x64 in the windows menu. The default MSYS2 app will appear on top, but the x64 version can be found right below (red circle).", echo=F}
+knitr::include_graphics("images/screenshot_windows_msys64_menu.png")
+```
+
+
+### Accessing MSYS2's home directory through Windows File Explorer {#section:MSYS2homedir}
+The home directory in MSYS2 is indicated by the `~` sign, which points to a directory on your hard drive. However, the MSYS2 home directory is not the same as your Windows home directory! Rather, MSYS2's home directory `~` maps to something like `C:/msys64/home/$your_user_name`, rather than to the usual location of the windows home directory which is something like `C:/Users/$your_user_name/home`, where you need to replace `$your_user_name` with your windows user name.
+
+
+Knowing that `~` is somewhere else than the standard home directory, you can still use the [Windows File Explorer](https://support.microsoft.com/en-us/windows/find-and-open-file-explorer-ef370130-1cca-9dc5-e0df-2f7416fe1cb1#WindowsVersion=Windows_10) to access this location and inspect the files present in `~`. Click the `This PC` in the left column of the Windows File Explorer and go to `C:/msys64/home/$your_user_name`. Here an example screenshot to clarify matters:
+```{r figWindowsExplorer, out.width="500pt", fig.cap="Accessing the contents of the `msys64` directory via Windows File Explorer. Later on, the simulation code and simulation output will be found within this directory (in particular, within its `home` directory).", echo=F}
+knitr::include_graphics("images/screenshot_windows_msys.png")
+```
+
+
+### Installing a command-line C++ compiler within MSYS2
 Rather than using any C++ compiler like Visual Studio or Code Blocks, we use the compiler [g++](https://gcc.gnu.org/), as that compiler is the same as used on our computing clusters. To install it, see the instruction video [here](https://recapexeter.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2acdf3c-224e-49be-8ae3-ad2400f2b3c1&start=0).
 
-### Installing git on windows
 
+### Installing `git` within MSYS2
+We need `git` to download and synchronize code repositories. To install `git` within MSYS2 type the command
+```{bash eval=F}
+pacman -S git
+```
 
-### Using the Mac OS Terminal app {#MacTerminal}
+### Windows: use notepad++ as your text editor of choice
+To edit and inspect source files, please **do not** use the standard text editor on windows, which is  [notepad](https://apps.microsoft.com/store/detail/windows-notepad/9MSMLRH6LZF3?hl=en-us&gl=US){target="_blank"}. This crippled and lame editor cannot read source files with line endings that are used on different operating systems like linux or mac. Moreover, it does not have syntax colouring, which is a life saver when reading code.
+
+Hence, please install the free editor Notepad++ which provides syntax colouring and more. 
+You can download a copy of Notepad++ [here](https://notepad-plus-plus.org/downloads/){target="_blank"}.
+
+If you don't like Notepad++, have a google yourself. Any code editor that supports syntax coloring of C++,R,Python files and supports `CR/LF` and `LF` line endings should be OK.
+
+## Mac: a UNIX terminal is provided via the Terminal app within the Applications/Utilities folder
 To use the UNIX toolchain on a mac, you will need to use a UNIX terminal. Luckily this is installed as per default on any mac distribution. You can find the Terminal app in the `Applications` > `Utilities` folder on your hard drive. See Apple's support page [here](https://support.apple.com/en-gb/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac){target="_blank"} for more information on how to open this application.
 
-### Installing g++ on a Mac
-In order to install g++ on a Mac, you need to follow [quite some  instructions](https://www.freecodecamp.org/news/install-xcode-command-line-tools/). Sorry no video.
+### Mac: Install `g++` and `git`
+In order to install g++ on a Mac, you need to follow [quite some  instructions](https://www.freecodecamp.org/news/install-xcode-command-line-tools/). Once this is installed `g++` is installed, as is `git`. 
 
-
+### Mac: install a text editor like textmate
+You can find Download textmate [here](https://macromates.com/){target="blank"}. If you don't like textmate, find any other code editor that supports syntax coloring of C++,R,Python files and supports `CR/LF` and `LF` line endings.

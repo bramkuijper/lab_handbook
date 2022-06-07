@@ -6,25 +6,22 @@ output: html_document
 Here we illustrate some of the basic steps we take to run simulations and analyze them. Please type along so that you can see what is happening on your own computer.
 
 ## Start the terminal
-By now, you should be able to start your UNIX terminal programme, which should be MSYS2-64 on windows or the Terminal programme on a mac. If you don't know where to find your UNIX terminal, read section \@ref(section:installcpp) and if that still does not work, get in touch. 
+By now, you should be able to start your **UNIX terminal programme**, which should be MSYS2-64 on windows or the Terminal programme on a mac. If you don't know where to find your UNIX terminal, read section \@ref(section:installcpp) and if that still does not work, get in touch. 
 
 ## Get to your home directory {#section:homedir}
-By using your UNIX terminal, go to your home directory. The home directory is contained in the alias `~` and can be accessed by using the [`cd`](https://www.tutorialspoint.com/unix_commands/cd.htm) command in the following way:
+By using your UNIX terminal, go to your home directory. The home directory is contained in the alias `~` and can be accessed by using the [`cd`](https://www.tutorialspoint.com/unix_commands/cd.htm){target="_blank"} command in the following way:
 ```{bash eval=T, collapse=T}
 cd ~
 ```
-You can then use the [`pwd`](https://phoenixnap.com/kb/pwd-linux) command (present working directory) to ensure that you are indeed in your home directory:
-```{bash eval=T, collapse=T}
+You can then use the [`pwd`](https://phoenixnap.com/kb/pwd-linux){target="_blank"} command (where `pwd` is an abbreviation of present working directory) to ensure that you are indeed in your home directory:
+```{bash eval=F, collapse=T}
 pwd
 ```
 
-### Windows users: MSYS2 and Windows home directories are not the same! {#section:windowsfileexplorer}
-The home directory `~` in MSYS2 is not the same as your Windows home directory! Rather, MSYS2's home directory `~` maps to something like `C:/MSYS2/home`, rather than to the usual location of the windows home directory which is something like `C:/Users/alwk/home`. 
+** Note for windows users: ** the MSYS2 home directory is not the same as your windows home directory. See for more information \@ref(section:MSYS2homedir).
 
-Knowing that `~` is somewhere else than the standard home directory, you can still use the [Windows File Explorer](https://support.microsoft.com/en-us/windows/find-and-open-file-explorer-ef370130-1cca-9dc5-e0df-2f7416fe1cb1#WindowsVersion=Windows_10) to access this location and inspect the files present in `~`. Click the `This PC` in the left column and go to `C:/MSYS2/home/`.
-
-## Check the contents of your home directory
-You can check the contents of your home directory using the `ls` (list files) command, where we provide the `ls` command with some additional 'flags', which are given by a dash `-`, followed by some additional single-character modifiers that change the behaviour of the `ls` command:
+## Check the contents of your home directory using `ls`
+You can check the contents of your home directory using the `ls` (list files) command, where we provide the `ls` command with some additional 'flags' to modify the information that is provided by `ls`. One can provide such flags by adding a space followed by a dash `-` and then followed by some additional single-character modifiers that change the behaviour of the `ls` command. For example, we can type
 ```{bash eval=F, collapse=T}
 ls -alnh
 ```
@@ -37,38 +34,81 @@ man ls
 ```
 which provides you with a manual page (man page) of the `ls` command. You can close this man page and return to the command line by pressing the `q` button.
 
-## Obtaining the simulation source code from github
-All research projects in this lab use code repositories on [github](https://github.com/bramkuijper), which you can clone to your own computer. Working with code on github has several advantages. One is that it is relatively easy to carry through updates in the code without having to e-mail around umpteen different versions of the source code. Moreover, once you have your own github account and I give you write access to my code repository, you can then submit your own updates to my github repository, so that we all have the latest version of the code available. Finally, github is great when it comes to recording changes and allowing you to roll back changes.
+### Using `ls` to locate the github repository that contains your simulation code
+All research projects in this lab use code repositories that I have uploaded to github and that you can download to your own computer and modify. See [here](https://github.com/bramkuijper) for a list of all repositories. If you don't know which of these repositories to download to your own computer, get in touch. 
 
-### Finding out whether you have already cloned a code repository
-If you vaguely remember using the `git clone` command before, perhaps you should first inspect the output of the `ls -lanh` command from within your home directory (`cd ~`) to find out whether a copy of the github repository in question is already present within your home directory. If you indeed find a directory within your home directory that looks remarkably similar to one of the [repositories](https://github.com/bramkuijper?tab=repositories), you know enough and you can skip the next step.
+Working with code repositories on github has several advantages: for starters, it facilitates carrying through updates without having to e-mail back-and-forth umpteen different versions of the source code. Second, if you have your own github account and I have provided you with write access to my code repository, you can then submit your own updates to my github repository, so that we all have the latest version of the code available. Third, github is great when it comes to keep track of all changes, which is essential when you want to roll back changes, for example. Fourth, it makes sure that the science we are doing is accessible and hence hopefully a bit more transparent.
 
-### Get the simulation code by using `git clone`
-To download a copy of the remote repository containing the simulation code to your own computer, do the following
+If you vaguely remember using the `git clone` command before, perhaps you should first inspect the output of the `ls -lanh` command from within your home directory (`cd ~`) to find out whether a copy of the github repository in question is already present within your home directory. For example, the command below shows code that displays the contents of a home directory on a remote computer:
+```{bash ls-listing, eval=F, file='ls_output.txt', fig.cap="Example output from the ls command",echo=F}
+```
+where you see several github repositories listed. If you want to understand what all the columns are, have a look [here](https://unix.stackexchange.com/a/103118){target="_blank"}. Note that the `d` modifiers in front mean that the file is a directory (as is the case for the `coop_size` directory, for example), whereas a `-` in front means the listed file is a regular file (as is the case for the `summary_data.csv` file). Git repositories are typically contained in directories unless we have messed things up.
+
+If you indeed find a directory within your home directory that looks remarkably similar to one of the [repositories](https://github.com/bramkuijper?tab=repositories), it means you have downloaded the repository already before. Hence, you can skip section \@ref(section:downloadgithub).
+
+
+### Download the simulation code by using `git clone` {#section:downloadgithub}
+
+To download a copy of the remote repository containing the simulation code to your own computer, execute the following command:
 ```{bash eval=F}
 git clone https://github.com/bramkuijper/YOUR_REPOSITORY
 ```
 where `YOUR_REPOSITORY` is the name of the repository that you should be using from [this list ](https://github.com/bramkuijper?tab=repositories). By now, you should know the name of the repository you should be cloning, otherwise get in touch.
 
+
 ## Exploring your local copy of the repository
-Once everything is cloned to your local hard disk, you can explore its contents. Using your UNIX terminal (MSYS2 on windows, Terminal on a mac), you can `cd` into the repository and use `ls` to explore the different files. Alternatively, you can also your file explorer programme ([Windows File Explorer](https://support.microsoft.com/en-us/windows/find-and-open-file-explorer-ef370130-1cca-9dc5-e0df-2f7416fe1cb1#WindowsVersion=Windows_10) or [Finder](https://support.apple.com/en-gb/HT201732)) to go the location of your repository (see section \@ref(section:windowsfileexplorer)).
+Once everything is cloned to your local hard disk, you can explore its contents. Use `cd $repository_name` (where you need to replace `$repository_name` with the name of your repository, for example `cd coop_size`) to enter into the repository. 
+
+### Pro-tip: save on typing a lot by using `Tab` autocompletion
+Typing out whole directory names like `cd sexsel_space_multisignal` gets tedious after a while. Luckily, you can save on typing everything. Instead type the first few letters like `cd s` and then pressing the `Tab` button to autocomplete the directory name. 
+
+If there is only one directory name that starts with an `s`, pressing `Tab` results in immediate autocompletion of the directory name. If however, there are multiple directories starting with an `s`, the terminal will output all the different directories starting with an `s` (after pressing `Tab` at least twice). For example, typing `cd s` in the directory that has contents as listed in the above listing \@ref(fig:ls-listing) and then pressing `Tab` twice will give you
+```{bash eval=F}
+cd s
+#sexsel_bacteria/              sexsel_space_multisignal/     sex_specific_maternal_effect/ stress_damage/     
+```
+what this means is that the terminal found four alternative directory names that start with an `s`. It then asks you to supply more characters so that it knows which directory name to autocomplete. Hence if I'd type `cd sexsel_s` followed by `Tab`, there are no alternatives left, and the terminal immediately autocompletes the remainder of the directory name `sexsel_space_multisignal`.
+
+### Exploring your local repository continued...
+If the `cd` command was successful, you can then use `ls` to explore the contents. With respect to the `coop_size` directory, for example, we have the following listing:
+```{bash eval=F}
+ls -alnh
+total 564K
+#drwxr-xr-x 1 848446593 848298497  336 May 26 10:13 .
+#drwxr-xr-x 1 848446593 848298497  178 May 24 00:48 ..
+#-rw-r--r-- 1 848446593 848298497 4.8K May 24 00:48 coop_fluct.lyx
+#-rw-r--r-- 1 848446593 848298497 9.6K May 24 00:48 coop_size_continuous.nb
+#-rw-r--r-- 1 848446593 848298497 497K May 24 00:48 coop_size.nb
+#-rw-r--r-- 1 848446593 848298497  16K May 24 00:48 coop_variable_envts_leggett.nb
+#-rw-r--r-- 1 848446593 848298497 3.6K May 24 00:48 coop_variable_envts_queuing.nb
+#drwxr-xr-x 1 848446593 848298497   32 May 24 00:53 data
+#drwxr-xr-x 1 848446593 848298497   94 May 27 10:24 figs
+#drwxr-xr-x 1 848446593 848298497  204 May 27 00:05 .git
+#-rw-r--r-- 1 848446593 848298497  123 May 24 00:53 .gitignore
+#drwxr-xr-x 1 848446593 848298497  126 May 26 14:12 sbin
+#drwxr-xr-x 1 848446593 848298497   98 May 24 00:53 src
+#-rw-r--r-- 1 848446593 848298497  19K May 24 00:53 varying_patch_size_overlap.lyx
+```
+There is a whole bunch of files here, but we typically want to be looking into the `src` directory, which contains - in turn - other subdirectories such as `ibm` or `numerical` with source code. By now, you should 
+
+Alternatively, you can also your file explorer programme ([Windows File Explorer](https://support.microsoft.com/en-us/windows/find-and-open-file-explorer-ef370130-1cca-9dc5-e0df-2f7416fe1cb1#WindowsVersion=Windows_10) or [Finder](https://support.apple.com/en-gb/HT201732)) to go the location of your repository (see section \@ref(section:MSYS2homedir)).
 
 The files that end in `.cpp` are the C++ source files, which contain the necessary
 code. The files that end in `.hpp`
 are C++ header files, which provide a blueprint to the C++ compiler about 
 the interface of the different classes and structs used. Next, you may also
 see a file such as `CMakelists.txt` or `makefile` which are used by `cmake`
-and `make`, two programmes that make it (much) easier to compile all the software.
+and `make` to handily automate compilation of all the files.
 
-### Inspecting the source files     
+### Inspecting the source files
 You can inspect the contents of the source files by opening them in
-Notepad++ (on windows), which you can open through the windows start menu. Within notepad++
-you then have to navigate to the location of your MSYS2 home directory (see section \@ref(section:windowsfileexplorer). 
+Notepad++ (on windows, see section \@ref(section:notepad)), which you can open through the windows start menu. Within notepad++
+you then have to navigate to the location of your MSYS2 home directory (see section \@ref(section:MSYS2homedir). 
 
 On a mac, you can inspect the contents of the source files by opening them in 
 textmate, which you can find in your Applications folder.
 
-## Updating the software repositroy
+## Updating the software repository
 If you would like to update your repository to contain the latest version, `cd` to the directory of the repository on your local computer and obtain the most recent version of the repository. You do so by typing
 ```{bash eval=F}
 git pull

@@ -1,0 +1,10 @@
+ls -alnh
+#total 0
+#drwxr-xr-x 1 848446593 848298497  210 Jun  7 14:33 .
+#drwx------ 1 848446593 848298497 2.8K Jun  7 14:33 ..
+#drwxr-xr-x 1 848446593 848298497  336 May 26 10:13 coop_size
+#drwxr-xr-x 1 848446593 848298497  210 Mar 22 11:41 sexsel_bacteria
+#drwxr-xr-x 1 848446593 848298497   14 May 10 17:42 sexsel_space_multisignal
+#drwxr-xr-x 1 848446593 848298497  582 Sep  5  2021 sex_specific_maternal_effect
+#drwxr-xr-x 1 848446593 848298497   20 Dec 27 18:21 stress_damage
+#-rw-r--r-- 1 848446593 848298497    0 Jun  7 14:33 summary_data.csv
