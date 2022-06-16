@@ -1,0 +1,40 @@
+---
+output: html_document
+---
+# Working with `git`
+Here a listing of how to work with git and some common errors:
+
+## Recording local changes via `git commit` 
+Every time you make edits to your code base, it is a good idea to record those edits via `git commit`. 
+In doing so, you commit any changes to your repository. This 
+any of your edits are recorded, making it easier to simply roll back changes or inspect older versions
+of your simulation code. If you think this is futile, think again! Numerous times, my life was saved by
+being able to revert back to older versions of the source code 
+
+For `git` to be aware that you are making any changes, you need to record them by typing the command 
+```{bash eval=F}
+git commit -am "some message of your choice"
+```
+where you replace `some mess
+
+## Uploading local changes to remote via `Git push` 
+If you want to upload your local changes to the remote repository, we first need to make sure that we have done a `git commit` so that all changes are recorded in the repository. Subsequently, we do
+```{bash eval=F}
+git push
+``` 
+we try to upload our local changes to the remote repository. 
+
+### `Issues with `git push`: 1. remote containswork that you do not have locally
+After running `git push`, it might be that the remote repository contains more recent changes than are included in the current code. `git` then throws the following error:
+
+```
+	To github.com:bramkuijper/sexsel_space_multisignal.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:bramkuijper/sexsel_space_multisignal.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+To solve this, we need to 

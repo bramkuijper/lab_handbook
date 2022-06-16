@@ -117,14 +117,14 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={A typical work cycle when running simulations},
+  pdftitle={Lab Handbook},
   pdfauthor={Bram Kuijper},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{A typical work cycle when running simulations}
+\title{Lab Handbook}
 \author{Bram Kuijper}
-\date{2022-06-07}
+\date{2022-06-16}
 
 \begin{document}
 \maketitle
@@ -143,12 +143,36 @@ This document gives you an overview of some of the key computing practices used 
 
 To do your research in theoretical or computational biology, you will need to install a bunch of software. I typically try to keep things as free and open access as possible, so that you don't have hassle with license fees. However, this is not always possible (e.g., research projects involving Mathematica or matlab).
 
-Don't install \emph{all} the software listed below - by now, you should have a clear idea what selection of software you need. If not, get in touch asap.
+\hypertarget{finding-out-what-software-you-need}{%
+\section{Finding out what software you need}\label{finding-out-what-software-you-need}}
 
-\hypertarget{on-a-mac-install-your-software-using-the-homebrew-package-manager}{%
-\section{On a Mac? Install your software using the Homebrew package manager}\label{on-a-mac-install-your-software-using-the-homebrew-package-manager}}
+Don't install \emph{all} the software listed below. Rather contact me to discuss what software you need. Typically, you need one (or two) of the following options:
 
-\href{https://brew.sh}{Homebrew} is a small program that allows you to install and update multiple programs on your Mac simultaneously. Indeed, all research software that you will need on your Mac can be installed with homebrew. Using homebrew has the advantage that installation involves a single command, rather than you having to search for the correct version of the software online. Moreover, all installed packages will be updated to their latest versions by using two simple commands: \texttt{brew\ update}, following by \texttt{brew\ upgrade}.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The Rstudio environment
+\item
+  A Python environment
+\item
+  A C++ environment
+\item
+  A Mathematica environment
+\end{enumerate}
+
+\hypertarget{the-rstudio-environment}{%
+\section{The Rstudio environment}\label{the-rstudio-environment}}
+
+R is a very commonly used programming environment and particularly useful for data analysis. Its disadvantages are that it is slow and that the programming language is arcane, to say the least. All pros and cons considered, if your project is data heavy, R is a great choice.
+
+Rather than using the \href{https://cran.r-project.org/}{absolute bare bones version of the programming environment R}, we use \href{https://www.rstudio.com/}{Rstudio}, because it provides a full-blown IDE (integrated development environment) with text editor, variable inspector, file browswer and more. You can either use your web browser to go to the online \href{https://rstudio01.cles.ex.ac.uk}{Rstudio server} that is offered by the University of Exeter. Alternatively, you can choose to use a locally installed version of Rstudio (see below for installation instructions). If you don't know whether to choose the server-based version or the local installed he server-based version of Rstudio is probably the easiest to use, as it already has tons of packages pre-installed. However, if you have no uni access anymore or don't have continuous internet access, a locally installed version of Rstudio is best.
+
+\hypertarget{installing-rstudio-on-a-mac}{%
+\subsection{Installing Rstudio on a mac}\label{installing-rstudio-on-a-mac}}
+
+A great way of keeping Rstudio up-to-date is to first install the Homebrew package manager
+\href{https://brew.sh}{Homebrew}. This is a small program that allows you to install and update multiple programs on your Mac. Indeed, almost any research software that you will need on your Mac can be installed with homebrew. Using homebrew has the advantage that installation involves a single command, rather than you having to search for the correct version of the software online. Moreover, all installed packages will be updated to their latest versions by using two simple commands: \texttt{brew\ update}, following by \texttt{brew\ upgrade}.
 
 \hypertarget{installing-homebrew}{%
 \subsection{Installing homebrew}\label{installing-homebrew}}
@@ -182,15 +206,13 @@ This is where things get handier than installing all software individually:
 \hypertarget{rstudio}{%
 \section{Rstudio}\label{rstudio}}
 
-Rather than using the \href{https://cran.r-project.org/}{absolute bare bones version of R}, I'd use \href{https://www.rstudio.com/}{Rstudio} as it provides a full-blown IDE (integrated development environment) with text editor, variable inspector, file browswer and more. You can either use the \href{https://rstudio01.cles.ex.ac.uk}{Rstudio server} that is offered by the University of Exeter, or use a locally installed version of Rstudio. Personally, the server-based version of Rstudio is probably the easiest to use, as it already has tons of packages pre-installed. However, if you have no uni access anymore or don't have continuous internet access, a locally installed version of Rstudio is best.
-
 \hypertarget{using-the-web-based-rstudio-server}{%
 \subsection{Using the web-based Rstudio server}\label{using-the-web-based-rstudio-server}}
 
 You can simply access this by using your web browser. You can access the Rstudio server here:
 \url{https://rstudio01.cles.ex.ac.uk}, using your University of Exeter login.
 
-Once logged in, make sure to run the 4.x.x version, rather than a 3.x.x version. You can change versions on the top right of your Rstudio window within in your web browser. By now
+Once logged in, make sure to run the 4.x.x version, rather than a 3.x.x version. You can change versions on the top right of your Rstudio window within in your web browser. See the image below
 
 \hypertarget{installing-rstudio-on-your-own-computer-on-windows-or-mac}{%
 \subsection{Installing Rstudio on your own computer on windows or mac}\label{installing-rstudio-on-your-own-computer-on-windows-or-mac}}
@@ -208,9 +230,20 @@ If you have a Windows machine, the best way to install Rstudio is to download th
 
 For those of you who will need to install python (installing python is more the exception than the norm, hence ask if unsure), it is best to install the \href{https://www.anaconda.com/products/individual}{Anaconda} distribution, which provides the whole python bundle and comes with a package manager.
 
-\hypertarget{section:installcpp}{%
-\section{Installing software to develop C++ programs}\label{section:installcpp}}
+\hypertarget{section:mobaxterm}{%
+\section{Windows: Accessing remote servers using mobaxterm}\label{section:mobaxterm}}
 
+For some projects we need to access a remote server to run our software. For this we use the programme \href{https://mobaxterm.mobatek.net/download.html}{mobaxterm}.
+
+To install mobaxterm, watch this handy \href{https://www.youtube.com/watch?v=KRpgYS-eHj8\&t=87s}{video}. Make sure you download the `Portable version' rather than the `Installer' version.
+
+The mobaxterm-xxx.exe file can be ran from anywhere on your operating system (hence, the name Portable). Hence, try to put in a location where you will not forget it. Alternatively make a shortcut to the mobaxterm-xxx.exe file (Right mouse click \textgreater{} create shortcut) and then drag the shortcut to the taskbar in Windows. See \href{https://www.youtube.com/watch?v=3K9oYys-tYE}{this video} of some dude explaining everything taskbar-related on windows.
+
+\hypertarget{using-mobaxterm-to-access-a-remote-location}{%
+\subsection{Using Mobaxterm to access a remote location}\label{using-mobaxterm-to-access-a-remote-location}}
+
+Now let's use mobaxterm to access the remote server.
+\#\# Installing software to develop C++ programs \{\#section:installcpp\}
 When working with the programming language C++, we will need to use the following software:
 
 \begin{enumerate}
@@ -297,22 +330,65 @@ In order to install g++ on a Mac, you need to follow \href{https://www.freecodec
 \hypertarget{mac-install-a-text-editor-like-textmate}{%
 \subsection{Mac: install a text editor like textmate}\label{mac-install-a-text-editor-like-textmate}}
 
-You can find textmate \href{https://macromates.com/}{here}. If you don't like textmate, find any other code editor that supports syntax coloring of C++,R,Python files and supports \texttt{CR/LF} and \texttt{LF} line endings.
+You can find Download textmate \href{https://macromates.com/}{here}. If you don't like textmate, find any other code editor that supports syntax coloring of C++,R,Python files and supports \texttt{CR/LF} and \texttt{LF} line endings.
 
-\hypertarget{a-typical-daily-work-cycle-when-running-simulations}{%
-\chapter{A typical daily work cycle when running simulations}\label{a-typical-daily-work-cycle-when-running-simulations}}
+\hypertarget{a-typical-work-cycle-when-running-simulations-in-c}{%
+\chapter{A typical work cycle when running simulations in C++}\label{a-typical-work-cycle-when-running-simulations-in-c}}
 
-Here we illustrate some of the basic steps we take to run simulations and analyze them. Please type along so that you can see what is happening on your own computer.
+Here we illustrate some of the basic steps we take to run simulations and analyze them. A typical work cycle consists of
 
-\hypertarget{start-the-terminal}{%
-\section{Start the terminal}\label{start-the-terminal}}
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\tightlist
+\item
+  accessing the code base via a UNIX terminal,
+\item
+  making sure you have all the latest updates of your code base using \texttt{git\ pull},
+\item
+  editing the code via an appropriate text editor
+\item
+  compiling the code
+\item
+  running the compiled program
+\item
+  analyzing the resulting data
+\end{enumerate}
 
-By now, you should be able to start your \textbf{UNIX terminal programme}, which should be MSYS2-64 on windows or the Terminal programme on a mac. If you don't know where to find your UNIX terminal, read section \ref{section:installcpp} and if that still does not work, get in touch.
+\hypertarget{access-the-code-base-via-the-terminal}{%
+\section{Access the code base via the terminal}\label{access-the-code-base-via-the-terminal}}
 
-\hypertarget{section:homedir}{%
-\section{Get to your home directory}\label{section:homedir}}
+\hypertarget{starting-the-unix-terminal}{%
+\subsection{Starting the UNIX terminal}\label{starting-the-unix-terminal}}
 
-By using your UNIX terminal, go to your home directory. The home directory is contained in the alias \texttt{\textasciitilde{}} and can be accessed by using the \href{https://www.tutorialspoint.com/unix_commands/cd.htm}{\texttt{cd}} command in the following way:
+A unix terminal is a command-line environment that allows you to interact with your operating system and the files on your computer.
+By now, you should be able to start your \textbf{UNIX terminal programme}, which should be one of the following:
+
+\hypertarget{your-terminal-program-on-windows}{%
+\subsection{Your terminal program on windows}\label{your-terminal-program-on-windows}}
+
+\begin{itemize}
+\tightlist
+\item
+  MSYS2-64 on your local windows PC with which you can access the local code repository. See \ref{section:installcpp} for install instructions
+\item
+  \href{https://mobaxterm.mobatek.net/download.html}{mobaxterm} on your local windows PC to log into a remote server. This should be either somewhere in your \texttt{Downloads} or \texttt{Desktop} folders, dependent on where you downloaded it. See \ref{section:mobaxterm} for install instructions.
+\end{itemize}
+
+\hypertarget{your-terminal-program-on-a-mac}{%
+\subsection{Your terminal program on a mac}\label{your-terminal-program-on-a-mac}}
+
+\begin{itemize}
+\tightlist
+\item
+  The Terminal programme that can be found in the \texttt{Applications\ \textgreater{}\ Utilities} folder
+\end{itemize}
+
+If you can't find your UNIX terminal, read section \ref{section:installcpp} and if that still does not work, get in touch.
+
+\hypertarget{use-the-terminal-to-navigate-to-your-repository}{%
+\subsection{Use the terminal to navigate to your repository}\label{use-the-terminal-to-navigate-to-your-repository}}
+
+First, we need to go to your home directory. The home directory is contained in the alias \texttt{\textasciitilde{}} and if you are not already there, it can be accessed by using the \href{https://www.tutorialspoint.com/unix_commands/cd.htm}{\texttt{cd}} command (which stands for `change directory') in the following way:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -320,7 +396,7 @@ By using your UNIX terminal, go to your home directory. The home directory is co
 \end{Highlighting}
 \end{Shaded}
 
-You can then use the \href{https://phoenixnap.com/kb/pwd-linux}{\texttt{pwd}} command (where \texttt{pwd} is an abbreviation of present working directory) to ensure that you are indeed in your home directory:
+You can then use the \href{https://phoenixnap.com/kb/pwd-linux}{\texttt{pwd}} command (where \texttt{pwd} is an abbreviation of present working directory) to inspect the current directory at which you are. If everything is ok, you should see that you are in your home directory:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -331,9 +407,9 @@ You can then use the \href{https://phoenixnap.com/kb/pwd-linux}{\texttt{pwd}} co
 ** Note for windows users: ** the MSYS2 home directory is not the same as your windows home directory. See for more information \ref{section:MSYS2homedir}.
 
 \hypertarget{check-the-contents-of-your-home-directory-using-ls}{%
-\section{\texorpdfstring{Check the contents of your home directory using \texttt{ls}}{Check the contents of your home directory using ls}}\label{check-the-contents-of-your-home-directory-using-ls}}
+\subsubsection{\texorpdfstring{Check the contents of your home directory using \texttt{ls}}{Check the contents of your home directory using ls}}\label{check-the-contents-of-your-home-directory-using-ls}}
 
-You can check the contents of your home directory using the \texttt{ls} (list files) command, where we provide the \texttt{ls} command with some additional `flags' to modify the information that is provided by \texttt{ls}. One can provide such flags by adding a space followed by a dash \texttt{-} and then followed by some additional single-character modifiers that change the behaviour of the \texttt{ls} command. For example, we can type
+To navigate any further (remember: we need to go to your code repository), we need to get an idea of where to go in the home directory. To this end, we can check the contents of your home directory using the \texttt{ls} (list files) command. Typially, I provide the \texttt{ls} command with some additional `flags' to increase the amount of information provided by \texttt{ls}. One can provide such flags by adding a space followed by a dash \texttt{-} and then followed by some additional single-character modifiers that change the behaviour of the \texttt{ls} command. For example, we can type
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -351,7 +427,7 @@ If you want to know more about the documentation of the \texttt{ls} command, typ
 \end{Highlighting}
 \end{Shaded}
 
-which provides you with a manual page (man page) of the \texttt{ls} command. You can close this man page and return to the command line by pressing the \texttt{q} button.
+which provides you with a manual page (man page) of the \texttt{ls} command. You can close this man page and return to the command line by typing \texttt{q}.
 
 \hypertarget{using-ls-to-locate-the-github-repository-that-contains-your-simulation-code}{%
 \subsection{\texorpdfstring{Using \texttt{ls} to locate the github repository that contains your simulation code}{Using ls to locate the github repository that contains your simulation code}}\label{using-ls-to-locate-the-github-repository-that-contains-your-simulation-code}}
@@ -527,6 +603,51 @@ and make sure that the \texttt{\textgreater{}\textgreater{}\textgreater{}\textgr
 \section{Compiling the software}\label{compiling-the-software}}
 
 For a typical simulation, you will find the source code in the \texttt{src} directory (or one of its subdirectories) within the repository. If you want to compile the simulation code,
+
+\hypertarget{working-with-git}{%
+\chapter{\texorpdfstring{Working with \texttt{git}}{Working with git}}\label{working-with-git}}
+
+Here a listing of how to work with git and some common errors:
+
+\hypertarget{recording-local-changes-to-remote-via-git-commit}{%
+\section{\texorpdfstring{Recording local changes to remote via \texttt{Git\ commit}}{Recording local changes to remote via Git commit}}\label{recording-local-changes-to-remote-via-git-commit}}
+
+For \texttt{git} to be aware that you are making any changes, you need to record them by typing the command
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{uploading-local-changes-to-remote-via-git-push}{%
+\section{\texorpdfstring{Uploading local changes to remote via \texttt{Git\ push}}{Uploading local changes to remote via Git push}}\label{uploading-local-changes-to-remote-via-git-push}}
+
+If you want to upload your local changes to the remote repository, we first need to make sure that we have done a \texttt{git\ commit} so that all changes are recorded in the repository. Subsequently, we do
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ push}
+\end{Highlighting}
+\end{Shaded}
+
+we try to upload our local changes to the remote repository.
+
+\hypertarget{issues-withgit-push-1.-remote-containswork-that-you-do-not-have-locally-after-runninggit-push-it-might-be-that-the-remote-repository-contains-more-recent-changes-than-are-included-in-the-current-code.git-then-throws-the-following-error}{%
+\subsection{\texorpdfstring{\texttt{Issues\ with}git push\texttt{:\ 1.\ remote\ containswork\ that\ you\ do\ not\ have\ locally\ After\ running}git push\texttt{,\ it\ might\ be\ that\ the\ remote\ repository\ contains\ more\ recent\ changes\ than\ are\ included\ in\ the\ current\ code.}git` then throws the following error:}{Issues withgit push: 1. remote containswork that you do not have locally After runninggit push, it might be that the remote repository contains more recent changes than are included in the current code.git` then throws the following error:}}\label{issues-withgit-push-1.-remote-containswork-that-you-do-not-have-locally-after-runninggit-push-it-might-be-that-the-remote-repository-contains-more-recent-changes-than-are-included-in-the-current-code.git-then-throws-the-following-error}}
+
+\begin{verbatim}
+    To github.com:bramkuijper/sexsel_space_multisignal.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:bramkuijper/sexsel_space_multisignal.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+\end{verbatim}
+
+To solve this, we need to
 
 \hypertarget{some-writing-advice}{%
 \chapter{Some Writing Advice}\label{some-writing-advice}}

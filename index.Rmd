@@ -12,4 +12,4 @@ description: "Overview of things we do"
 ---
 
 # Introduction
-This document gives you an overview of some of the key computing practices used in our lab. Enjoy!
+This document gives you an overview of some of the key computing practices used in our lab. I want as much feedback on this as possible so that we can improve the experience for the next collaborators/students, hence happy to hear any suggestions for improvement.

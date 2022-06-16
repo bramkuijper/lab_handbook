@@ -1,27 +1,51 @@
 ---
-title: "A typical work cycle when running simulations"
 output: html_document
 ---
-# A typical daily work cycle when running simulations
-Here we illustrate some of the basic steps we take to run simulations and analyze them. Please type along so that you can see what is happening on your own computer.
+# A typical work cycle when running simulations in C++
+Here we illustrate some of the basic steps we take to run simulations and analyze them. A typical work cycle consists of 
 
-## Start the terminal
-By now, you should be able to start your **UNIX terminal programme**, which should be MSYS2-64 on windows or the Terminal programme on a mac. If you don't know where to find your UNIX terminal, read section \@ref(section:installcpp) and if that still does not work, get in touch. 
+ i) accessing the code base via a UNIX terminal, 
+ ii) making sure you have all the latest updates of your code base using `git pull`, 
+ iii) editing the code via an appropriate text editor
+ iv) compiling the code
+ v) running the compiled program
+ vi) analyzing the resulting data
 
-## Get to your home directory {#section:homedir}
-By using your UNIX terminal, go to your home directory. The home directory is contained in the alias `~` and can be accessed by using the [`cd`](https://www.tutorialspoint.com/unix_commands/cd.htm){target="_blank"} command in the following way:
+## Access the code base via the terminal
+
+### Starting the UNIX terminal
+A UNIX terminal is a command-line environment that allows you to interact with your operating system and the files on your computer. 
+
+We need a command-line environment, because soon enough you may find yourself having to work on one of our computing clusters, where the commmand line environment is the only way to get anything done, as it completely lacks any other software.
+
+By now, you should be able to start your **UNIX terminal programme**, which should be one of the following:
+
+### Terminal programmes on windows
+
+ * MSYS2-64 on your local windows PC with which you can access the local code repository. See \@ref(section:installcpp) for install instructions
+ * If you have a login to a remote server, use [mobaxterm](https://mobaxterm.mobatek.net/download.html) on your local windows PC to log into a remote server. This should be either somewhere in your `Downloads` or `Desktop` folders, dependent on where you downloaded it. See \@ref(section:mobaxterm) for install instructions.
+ 
+### Your terminal program on a mac
+ * The Terminal programme that can be found in the `Applications > Utilities` folder
+ 
+
+If you can't find your UNIX terminal, read section \@ref(section:installcpp) and if that still does not work, get in touch. 
+
+
+### Use the terminal to navigate to your repository
+First, we need to go to your home directory. The home directory is contained in the alias `~` and if you are not already there, it can be accessed by using the [`cd`](https://www.tutorialspoint.com/unix_commands/cd.htm){target="_blank"} command (which stands for 'change directory') in the following way:
 ```{bash eval=T, collapse=T}
 cd ~
 ```
-You can then use the [`pwd`](https://phoenixnap.com/kb/pwd-linux){target="_blank"} command (where `pwd` is an abbreviation of present working directory) to ensure that you are indeed in your home directory:
+You can then use the [`pwd`](https://phoenixnap.com/kb/pwd-linux){target="_blank"} command (where `pwd` is an abbreviation of present working directory) to inspect the current directory at which you are. If everything is ok, you should see that you are in your home directory:
 ```{bash eval=F, collapse=T}
 pwd
 ```
 
 ** Note for windows users: ** the MSYS2 home directory is not the same as your windows home directory. See for more information \@ref(section:MSYS2homedir).
 
-## Check the contents of your home directory using `ls`
-You can check the contents of your home directory using the `ls` (list files) command, where we provide the `ls` command with some additional 'flags' to modify the information that is provided by `ls`. One can provide such flags by adding a space followed by a dash `-` and then followed by some additional single-character modifiers that change the behaviour of the `ls` command. For example, we can type
+#### Check the contents of your home directory using `ls`
+To navigate any further (remember: we need to go to your code repository), we need to get an idea of where to go in the home directory. To this end, we can check the contents of your home directory using the `ls` (list files) command. Typially, I provide the `ls` command with some additional 'flags' to increase the amount of information provided by `ls`. One can provide such flags by adding a space followed by a dash `-` and then followed by some additional single-character modifiers that change the behaviour of the `ls` command. For example, we can type
 ```{bash eval=F, collapse=T}
 ls -alnh
 ```
@@ -32,7 +56,7 @@ If you want to know more about the documentation of the `ls` command, type:
 ```{bash eval=F}
 man ls
 ```
-which provides you with a manual page (man page) of the `ls` command. You can close this man page and return to the command line by pressing the `q` button.
+which provides you with a manual page (man page) of the `ls` command. You can close this man page and return to the command line by typing `q`. 
 
 ### Using `ls` to locate the github repository that contains your simulation code
 All research projects in this lab use code repositories that I have uploaded to github and that you can download to your own computer and modify. See [here](https://github.com/bramkuijper) for a list of all repositories. If you don't know which of these repositories to download to your own computer, get in touch. 

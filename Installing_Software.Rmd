@@ -1,20 +1,53 @@
 ---
-title: "Obtaining and installing relevant software"
 output: html_document
 ---
 
 # Installing and using software to do your work
 To do your research in theoretical or computational biology, you will need to install a bunch of software. I typically try to keep things as free and open access as possible, so that you don't have hassle with license fees. However, this is not always possible (e.g., research projects involving Mathematica or matlab).
 
-Don't install *all* the software listed below - by now, you should have a clear idea what selection of software you need. If not, get in touch asap.
+## Finding out what software you need
+Don't install *all* the software listed below. Rather contact me to discuss what software you need. Typically, you need one (or two) of the following options:
 
-## On a Mac? Install your software using the Homebrew package manager
-[Homebrew](https://brew.sh){target="_blank"} is a small program that allows you to install and update multiple programs on your Mac simultaneously. Indeed, all research software that you will need on your Mac can be installed with homebrew. Using homebrew has the advantage that installation involves a single command, rather than you having to search for the correct version of the software online. Moreover, all installed packages will be updated to their latest versions by using two simple commands: `brew update`, following by `brew upgrade`.
+ 1. The Rstudio environment
+ 2. A Python environment
+ 3. A C++ environment
+ 4. A Mathematica environment
+ 
+## The Rstudio environment
+R is a very commonly used programming environment and particularly useful for data analysis. Its disadvantages are that it is slow and that the programming language is arcane, to say the least. All pros and cons considered, if your project is data heavy, R is a great choice.
+
+Rather than using the [absolute bare bones version of the programming environment R](https://cran.r-project.org/){target="_blank"}, we use [Rstudio](https://www.rstudio.com/), because it provides a full-blown IDE (integrated development environment) with text editor, variable inspector, file browswer and more. You can either use your web browser to go to the online [Rstudio server](https://rstudio01.cles.ex.ac.uk){target="_blank"} that is offered by the University of Exeter. Alternatively, you can choose to use a locally installed version of Rstudio (see below for installation instructions). If you don't know whether to choose the server-based version or the local installed he server-based version of Rstudio is probably the easiest to use, as it already has tons of packages pre-installed. However, if you have no uni access anymore or don't have continuous internet access, a locally installed version of Rstudio is best.
+
+
+## Rstudio
+### Using the web-based Rstudio server
+You can simply access this by using your web browser. You can access the Rstudio server here:
+[https://rstudio01.cles.ex.ac.uk](https://rstudio01.cles.ex.ac.uk){target="_blank"}, using your University of Exeter login. 
+
+Once logged in, make sure to run the 4.x.x version, rather than a 3.x.x version. You can change versions on the top right of your Rstudio window within in your web browser. See the image below 
+
+```{r figRstudioVersion, out.width="400pt", fig.cap="Changing the version in Rstudio online", echo=F}
+knitr::include_graphics("images/screenshot_rstudio_version.png")
+```
+
+
+### Installing Rstudio on windows
+If you have a Windows machine, the best way to install Rstudio is to download the [Desktop version](https://www.rstudio.com/products/rstudio/download/){target="_blank"}. 
+
+### Installing Rstudio on a mac
+A great way of keeping Rstudio up-to-date is to first install the Homebrew package manager
+[Homebrew](https://brew.sh){target="_blank"}. This is a small program that allows you to install and update multiple programs on your Mac. Indeed, almost any research software that you will need on your Mac can be installed with homebrew. Using homebrew has the advantage that installation involves a single command, rather than you having to search for the correct version of the software online. Moreover, all installed packages will be updated to their latest versions by using two simple commands: `brew update`, following by `brew upgrade`.
 
 ### Installing homebrew
 To install homebrew, you need to open the Terminal app (see [here](#MacTerminal) about where to find the Terminal app on your Mac). Once the terminal is open, copy the single-line install statement from the [Homebrew website](https://brew.sh/){target="_blank"} and paste it into the Terminal app. Then press 'Enter'. You will get a bunch of straightforward questions, after which homebrew installs itself.
 
-### Installing your first application using homebrew
+### Installing Rstudio via homebrew
+If you are on a mac, install Rstudio via homebrew:
+```{bash eval=F}
+brew install --cask rstudio
+```
+
+### Installing other applications via homebrew, such as the text editor textmate
 After homebrew is installed, you can use it to install other applications. You can search for software available for install through homebrew by using the website [formulae.brew.sh](https://formulae.brew.sh). 
 
 Let us install the [Textmate] text editor that we might need later. We do so using the [Terminal app](#MacTerminal) app, in which we type
@@ -28,24 +61,22 @@ This is where things get handier than installing all software individually:
 brew update && brew upgrade
 ```
 
-## Rstudio
-Rather than using the [absolute bare bones version of R](https://cran.r-project.org/){target="_blank"}, I'd use [Rstudio](https://www.rstudio.com/) as it provides a full-blown IDE (integrated development environment) with text editor, variable inspector, file browswer and more. You can either use the [Rstudio server](https://rstudio01.cles.ex.ac.uk){target="_blank"} that is offered by the University of Exeter, or use a locally installed version of Rstudio. Personally, the server-based version of Rstudio is probably the easiest to use, as it already has tons of packages pre-installed. However, if you have no uni access anymore or don't have continuous internet access, a locally installed version of Rstudio is best.
-
-### Using the web-based Rstudio server
-You can simply access this by using your web browser. You can access the Rstudio server here:
-[https://rstudio01.cles.ex.ac.uk](https://rstudio01.cles.ex.ac.uk){target="_blank"}, using your University of Exeter login. 
-
-Once logged in, make sure to run the 4.x.x version, rather than a 3.x.x version. You can change versions on the top right of your Rstudio window within in your web browser. By now
-
-
-### Installing Rstudio on your own computer on windows or mac
-If you have a Windows machine, the best way to install Rstudio is to download the [Desktop version](https://www.rstudio.com/products/rstudio/download/){target="_blank"}. If you are on a mac, one could use:
-```{bash eval=F}
-brew install --cask rstudio
-```
 
 ## Installing Python
 For those of you who will need to install python (installing python is more the exception than the norm, hence ask if unsure), it is best to install the  [Anaconda](https://www.anaconda.com/products/individual){target="_blank"}  distribution, which provides the whole python bundle and comes with a package manager.
+
+
+## Windows: Accessing remote servers using mobaxterm {#section:mobaxterm}
+For some projects we need to access a remote server to run our software. For this we use the programme [mobaxterm](https://mobaxterm.mobatek.net/download.html). 
+
+To install mobaxterm, watch this handy [video](https://www.youtube.com/watch?v=KRpgYS-eHj8&t=87s){target="_blank"}. Make sure you download the 'Portable version' rather than the 'Installer' version.
+
+The `mobaxterm-xxx.exe` file can be ran from anywhere on your operating system (hence, the name 'Portable'). Hence, try to put in a location where you will not forget it. Alternatively make a shortcut to the mobaxterm-xxx.exe file (Right mouse click > create shortcut) and then drag the shortcut to the taskbar in Windows. See [this video](https://www.youtube.com/watch?v=3K9oYys-tYE) of some dude explaining how you can add a shortcut to the taskbar in Windows and more.
+
+### Using Mobaxterm to access a remote location
+Now let's use mobaxterm to access the remote server. See this video
+
+
 
 
 ## Installing software to develop C++ programs {#section:installcpp}
