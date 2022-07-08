@@ -2,7 +2,9 @@ fig:figScreenShotMenu
 fig:figWindowsExplorer
 introduction
 installing-and-using-software-to-do-your-work
-on-a-mac-install-your-software-using-the-homebrew-package-manager
+finding-out-what-software-you-need
+the-rstudio-environment
+installing-rstudio-on-a-mac
 installing-homebrew
 installing-your-first-application-using-homebrew
 updating-all-applications-that-have-been-installed-via-homebrew
@@ -10,7 +12,8 @@ rstudio
 using-the-web-based-rstudio-server
 installing-rstudio-on-your-own-computer-on-windows-or-mac
 installing-python
-section:installcpp
+section:mobaxterm
+using-mobaxterm-to-access-a-remote-location
 yes-we-really-need-a-unix-terminal.
 windows-install-msys2-as-our-unix-terminal
 accessing-msys2-once-installed
@@ -21,9 +24,12 @@ windows-use-notepad-as-your-text-editor-of-choice
 mac-a-unix-terminal-is-provided-via-the-terminal-app-within-the-applicationsutilities-folder
 mac-install-g-and-git
 mac-install-a-text-editor-like-textmate
-a-typical-daily-work-cycle-when-running-simulations
-start-the-terminal
-section:homedir
+a-typical-work-cycle-when-running-simulations-in-c
+access-the-code-base-via-the-terminal
+starting-the-unix-terminal
+your-terminal-program-on-windows
+your-terminal-program-on-a-mac
+use-the-terminal-to-navigate-to-your-repository
 check-the-contents-of-your-home-directory-using-ls
 using-ls-to-locate-the-github-repository-that-contains-your-simulation-code
 section:downloadgithub
@@ -34,6 +40,10 @@ inspecting-the-source-files
 updating-the-software-repository
 conflicts-when-updating-the-software-repository
 compiling-the-software
+working-with-git
+recording-local-changes-to-remote-via-git-commit
+uploading-local-changes-to-remote-via-git-push
+issues-withgit-push-1.-remote-containswork-that-you-do-not-have-locally-after-runninggit-push-it-might-be-that-the-remote-repository-contains-more-recent-changes-than-are-included-in-the-current-code.git-then-throws-the-following-error
 some-writing-advice
 read-about-writing-literature-that-helps-improving-writing-skills
 example-theory-papers-to-help-you-write-about-theory

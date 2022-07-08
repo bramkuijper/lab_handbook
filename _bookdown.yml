@@ -1,5 +1,5 @@
 book_filename: "Lab_handbook"
-rmd_files: ["index.Rmd","Installing_Software.Rmd","SimulationWorkCycle.Rmd","Writing.Rmd"]
+rmd_files: ["index.Rmd","Projects_Introduction.Rmd","Installing_Software.Rmd","SimulationWorkCycle.Rmd","Working-with-git.Rmd","Writing.Rmd"]
 language:
   ui:
     chapter_name: "Chapter "

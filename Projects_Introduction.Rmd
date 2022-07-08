@@ -1,0 +1,18 @@
+--
+--
+
+# What do we do in a typical theory project?
+Theoretical projects are a different beast than the typical data oriented projects. There are a few steps:
+
+1. Orientation phase
+2. Model-building phase
+3. Getting results phase
+4. Interpretation phase
+
+## Orientation phase: reading the literature
+This stage has us reading the literature with a focus on the theory out there. Sure, we need to get ourselves up to speed with the biological question and read a few empirical papers, but the majority of papers you are reading should be about models that have tackled similar questions. 
+
+If you don't know what a theory paper is, well have a look at the following set:
+
+### How to read a theory paper
+First, it is not really necessary to understand all the maths, as this gets typically quite complicated for a biology student
